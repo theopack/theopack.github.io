@@ -1,5 +1,7 @@
 ---
 title: "Theodore Packert"
+
+
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
   image: img/profile.png
@@ -18,25 +20,12 @@ about:
       href: https://github.com/theopack/theopack.github.io
     - icon: file-earmark-pdf
       text: Resumé
-      href: resume-example.pdf
+      href: UpdatedResume.pdf
       target: _blank
     - icon: mailbox
       text: Email
       href: mailto:tcp1@geneseo.edu
 
----
-
-
-Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.
-
-## Education
-
-State University of New York at Geneseo | Geneseo, NY <br>
-B.S. in Data Analytics | Aug 2022 - May 2026 <br>
-Minor in Political Science
-
-## Experience
-
-Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024
+Engineers Country Club | Assistant Tennis Pro | May 2024 - Aug 2024
 
 

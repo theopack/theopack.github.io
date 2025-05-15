@@ -44,9 +44,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Theodore Packert",
+    "title": "YOUR NAME",
     "section": "",
-    "text": "Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana."
+    "text": "Share\nYou said: Add a menu of “Project” to the navigation bar using danl_proj_nba.ipynb. ChatGPT said: To add a “Project” menu to your Quarto website’s navigation bar, follow these steps:\nLocate your _quarto.yml file This file contains the configuration for your Quarto website.\nModify the navbar section Add an entry for the “Project” menu and link it to danl_proj_nba.ipynb.\nExample _quarto.yml update: yaml Copy Edit project: type: website\nwebsite: title: “Your Website Title” navbar: left: - text: “Home” href: index.qmd - text: “Project” href: danl_proj_nba.ipynb This will add “Project” to the navigation bar, linking it to danl_proj_nba.ipynb. If you need it to appear as a dropdown with multiple project-related pages, you can structure it like this:\nyaml Copy Edit navbar: left: - text: “Home” href: index.qmd - text: “Project” menu: - text: “NBA Analysis” href: danl_proj_nba.ipynb Rebuild your Quarto site Run the following in the terminal to render the site: sh Copy Edit quarto render Then, preview it: sh Copy Edit quarto preview Let me know if you need any refinements! 🚀\n\ntitle: “Theodore Packert”\nabout: template: trestles # jolla trestles solana marquee broadside image: img/profile.png image-width: 16em image-shape: rounded # rectangle round rounded\nlinks: - icon: linkedin text: LinkedIn href: https://linkedin.com/in/theodore-packert - icon: instagram text: Instagram href: https://instagram.com/teddypackert16 - icon: github text: GitHub href: https://github.com/theopack/theopack.github.io - icon: file-earmark-pdf text: Resumé href: UpdatedResume.pdf target: _blank - icon: mailbox text: Email href: mailto:tcp1@geneseo.edu\nEngineers Country Club | Assistant Tennis Pro | May 2024 - Aug 2024"
   },
   {
     "objectID": "index.html#education",
@@ -60,6 +60,34 @@
     "href": "index.html#experience",
     "title": "Theodore Packert",
     "section": "Experience",
-    "text": "Experience\nStarbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024"
+    "text": "Experience\nEngineers Country Club | Assistant Tennis Pro | May 2024 - Aug 2024"
+  },
+  {
+    "objectID": "danl_proj_nba.html#salary-distribution-among-teams",
+    "href": "danl_proj_nba.html#salary-distribution-among-teams",
+    "title": "Data Analysis Project",
+    "section": "Salary Distribution Among Teams",
+    "text": "Salary Distribution Among Teams\nLet’s start with the salary distribution among teams using seaborn for visualization. ​​\n\n\n# Handle missing values in 'Salary' by replacing them with the median salary\nmedian_salary = nba['Salary'].median()\nnba['Salary'].fillna(median_salary, inplace=True)\n\n/var/folders/_m/d6jf0jhd2zzdfd5kzdhl_24w0000gn/T/ipykernel_79892/1671011424.py:3: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.\nThe behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.\n\nFor example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.\n\n\n  nba['Salary'].fillna(median_salary, inplace=True)\n\n\n\n# Set the aesthetic style of the plots\nsns.set_style(\"whitegrid\")\n\n# Calculate total salary by team\nteam_salary = (\n    nba\n    .groupby('Team')['Salary']\n    .sum()\n    .reset_index()\n    .sort_values(by='Salary', ascending=False)\n)\n\n# Plot total salary by team\nplt.figure(figsize=(10, 16))\nsns.barplot(data = team_salary,\n            x = 'Salary', y = 'Team',\n            palette = 'coolwarm')\nplt.title('Total Salary Distribution Among NBA Teams')\nplt.xlabel('Total Salary')\nplt.ylabel('Team')\nplt.xticks(rotation=45)\nplt.show()\n\n\n\n\n\n\n\n\nThe visualization above displays the total salary distribution among NBA teams, with teams sorted by their total salary expenditure. This bar plot reveals which teams are the biggest spenders on player salaries and which are more conservative. The color gradient provides a visual cue to easily distinguish between the higher and lower spending teams.\nNotice that Portland Trail Blazers has the highest total salary followed by Golden State Warriors and Philadelphia 76ers, and Memphis Grizzlies has the lowest total salary."
+  },
+  {
+    "objectID": "danl_proj_nba.html#player-age-distribution",
+    "href": "danl_proj_nba.html#player-age-distribution",
+    "title": "Data Analysis Project",
+    "section": "Player Age Distribution",
+    "text": "Player Age Distribution\nNext, let’s explore the Player Age Distribution across the NBA. We’ll create a histogram to visualize how player ages are distributed, which will help us understand if the league trends younger, older, or has a balanced age mix. ​​\n\n# Convert 'Birthday' column to datetime format\nfrom dateutil import parser\n# nba['Birthday'] = nba['Birthday'].apply(lambda x: parser.parse(x))\n\n# Now, let's calculate the age of each player\n# nba['Age'] = (datetime.now() - nba['Birthday']).dt.days // 365\n\n# Plot the age distribution of NBA players\nplt.figure(figsize=(10, 6))\nsns.histplot(nba['Age'],\n             bins = 15,\n             kde = True,\n             color = 'skyblue')\nplt.title('Age Distribution of NBA Players')\nplt.xlabel('Age')\nplt.ylabel('Count')\nplt.show()\n\n\n/Users/bchoe/anaconda3/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.\n  with pd.option_context('mode.use_inf_as_na', True):\n\n\n\n\n\n\n\n\n\nThe histogram above shows the age distribution of NBA players, with a kernel density estimate (KDE) overlay to indicate the distribution shape. The plot helps identify the common ages for NBA players and whether there are significant numbers of very young or older players.\nNotice that the majority of players fall within an age range from 24 to 34. There are few players whose age is above 40."
+  },
+  {
+    "objectID": "danl_proj_nba.html#position-wise-salary-insights",
+    "href": "danl_proj_nba.html#position-wise-salary-insights",
+    "title": "Data Analysis Project",
+    "section": "Position-wise Salary Insights",
+    "text": "Position-wise Salary Insights\nMoving on to Position-wise Salary Insights, we’ll examine how average salaries differ across player positions. This analysis could reveal which positions are typically higher-paid, potentially reflecting their value on the basketball court. Let’s create a box plot to visualize the salary distribution for each position. ​​\n\n# Plot salary distribution by player position\nplt.figure(figsize=(10, 6))\nsns.boxplot(data = nba,\n            x = 'Position', y = 'Salary',\n            palette = 'Set2')\nplt.title('Salary Distribution by Position')\nplt.xlabel('Position')\nplt.ylabel('Salary')\nplt.show()\n\n\n\n\n\n\n\n\nThe box plot above illustrates the salary distribution by player position, showcasing the variation in salaries among different positions within the NBA. PG-SG has the highest median salary."
+  },
+  {
+    "objectID": "danl_proj_nba.html#top-10-highest-paid-players",
+    "href": "danl_proj_nba.html#top-10-highest-paid-players",
+    "title": "Data Analysis Project",
+    "section": "Top 10 Highest Paid Players",
+    "text": "Top 10 Highest Paid Players\nLastly, we’ll identify the Top 10 Highest Paid Players in the NBA. Let’s visualize this information.\n\n# Identify the top 10 highest paid players\ntop_10_salaries = nba.sort_values(by='Salary', ascending=False).head(10)\n\n# Plot the top 10 highest paid players\nplt.figure(figsize=(12, 8))\nsns.barplot(data = top_10_salaries,\n            x = 'Salary', y = 'PlayerName',\n            palette = 'viridis')\nplt.title('Top 10 Highest Paid NBA Players')\nplt.xlabel('Salary')\nplt.ylabel('Player')\nplt.show()\n\n\n\n\n\n\n\n\nThe bar plot above reveals the top 10 highest-paid NBA players, showcasing those who stand at the pinnacle of the league in terms of salary. This visualization not only highlights the star players who command the highest salaries but also may reflect their marketability, performance, and contribution to their respective teams."
   }
 ]
