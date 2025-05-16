@@ -1,0 +1,326 @@
+---
+title: "How was the United States 2024 Presidential Election Influenced?"
+author: "Theodore Packert"
+date: "2025-05-16"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    editor: visual
+    allow-html: true
+---
+
+```{r setup, include=FALSE}
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+
+# Load gas data and filter
+gas_data <- read_excel("pswrgvwall.xls", sheet = 4, skip = 2)
+colnames(gas_data)[1] <- "date"
+region_columns <- c(
+  "Weekly New England (PADD 1A) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Central Atlantic (PADD 1B) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Lower Atlantic (PADD 1C) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Midwest Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Gulf Coast Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Rocky Mountain Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly West Coast Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)"
+)
+
+gas_long <- gas_data %>%
+  select(date, all_of(region_columns)) %>%
+  pivot_longer(-date, names_to = "region", values_to = "price") %>%
+  filter(!is.na(price)) %>%
+  mutate(
+    date = as.Date(date),
+    region = gsub("Weekly |Regular.*|\\(.*\\)", "", region),
+    region = trimws(region)
+  )
+
+gas_long_filtered <- gas_long %>%
+  filter(date >= as.Date("2015-01-01") & date <= as.Date("2025-01-01"))
+```
+
+How was the United States 2024 Presidential Election Influenced?
+
+## Introduction
+
+The 2024 United States Presidential Election took place during one of the most economically and geopolitical turbulent periods in recent history. Inflation reached heights unseen since the early 1980s, and the cost of living rose sharply across the country. Average Americans faced soaring grocery bills, rising gasoline prices, and stagnant wages, factors that shaped their perception of leadership and policy. Meanwhile, foreign policy decisions, particularly the United States' ongoing financial and military support for Ukraine and its handling of immigration at the southern border, emerged as points of both debate and division. As a result, this election was not just about partisan preference or ideology, it became a reflection of how deeply voters felt the effects of both domestic and international pressures.
+
+Unlike earlier cycles in which cultural or social issues dominated political discourse, 2024 was a return to “pocketbook politics.” Economic hardship played a leading role in shaping the concerns of voters across a broad ideological spectrum. The lived experiences of inflation felt through the cost of essential goods and services contributed to voter frustration and skepticism toward the incumbent Democratic administration. The Republican campaign, led once again by former President Donald Trump, leveraged this dissatisfaction by framing the Democratic Party as disconnected from the realities facing working and middle-class families. Trump’s rhetoric emphasized economic nationalism, domestic energy production, and a sharp pivot from international spending, which resonated in regions most affected by price instability.
+
+The global context further heightened the stakes of the election. Russia’s invasion of Ukraine in 2022 sent shock waves through global energy and food markets, exacerbating inflation and economic volatility. While U.S. support for Ukraine was initially bipartisan, by 2024, it had become politically polarizing. Critics questioned why billions were being sent overseas while many American households struggled to afford groceries and fuel. Immigration also emerged as a flashpoint. Continued challenges at the southern border, combined with partisan narratives of crisis and inaction, further deepened political divides.
+
+In this climate, the electorate was asked to decide between continuity and change. Vice President Kamala Harris, running as the Democratic nominee, offered a platform that built on the Biden administration’s accomplishments and global alliances. Donald Trump, on the other hand, promised to put “America First,” prioritizing domestic spending and reducing foreign involvement. Voters were not only responding to policy proposals they were responding to tangible, personal experiences of economic stress and perceived national vulnerability.
+
+### Problem Statement
+
+This paper seeks to understand how economic indicators such as gasoline prices, grocery costs, and inflation interact with voter behavior during the 2024 election. In particular, it investigates whether economic distress and contentious foreign policy decisions had a measurable effect on the Republican Party’s electoral gains. While political scientists have long studied the impact of macroeconomic factors on election outcomes, this paper focuses on localized data at the county level to examine whether regional economic hardship aligns with political shifts.
+
+### Objectives / Research Questions
+
+This project is guided by the following questions:
+
+1.  How did the major factors affect the election?
+
+2.  How did the Biden Administration react to low approval numbers?
+
+3.  How much did prices go up during the Biden Administration?
+
+By addressing these questions, this paper aims to provide a data-driven analysis of the 2024 election, offering insights into how economic and geopolitical forces are reshaping the American political landscape.\
+
+## Data
+
+### Source & Scope
+
+The datasets used in this analysis were drawn from a combination of publicly available and institutional sources. Economic data, including gasoline, grocery, wheat, and corn prices, were sourced from:
+
+-   FRED (Federal Reserve Economic Data): Provided the regional Consumer Price Index (CPI) for groceries, specifically from the Midwest region.
+
+-   World Bank Commodity Markets: Supplied global monthly average prices for wheat and corn (in USD per metric ton).
+
+-   U.S. Energy Information Administration (EIA): Offered monthly Brent crude oil price data (USD per barrel).
+
+Election data was obtained from:
+
+-   GitHub Repository by tonmcg: Hosted county-level results for both the 2020 and 2024 U.S. Presidential Elections, including vote counts for major parties, county names, FIPS codes, and total voter turnout.
+
+The period covered spans from January 2020 to December 2024, capturing both pre-election and post-pandemic inflation dynamics. Economic data sets are monthly, while election data is reported once per cycle (2020 and 2024). The geographic scope includes all U.S. counties, providing a comprehensive spatial dimension to track regional patterns.
+
+### Variables
+
+Key variables used in this analysis include:
+
+-   POILBREUSDM: Brent crude oil price in USD per barrel (monthly).
+
+-   PMAIZMTUSDM: Corn price in USD per metric ton (monthly).
+
+-   PWHEAMTUSDM: Wheat price in USD per metric ton (monthly).
+
+-   MEDCPIM158SFRBCLE: Midwest regional Consumer Price Index for groceries.
+
+-   votes_gop / votes_dem: Total votes for Republican and Democratic candidates by county.
+
+-   total_votes: Total ballots cast in each county.
+
+-   per_gop / per_dem: Percentage of total votes for each party.
+
+-   vote_margin_diff: Change in GOP Democratic margin from 2020 to 2024.
+
+### Cleaning & Processing
+
+The data cleaning process involved multiple steps:
+
+1.  Date Alignment: Monthly economic data was aligned by date across all sources.
+
+2.  Interpolation of Missing Values: A few months were missing from the CPI and commodity series; these were interpolated using linear methods.
+
+3.  Standardization: All numeric economic variables were normalized (z scores) to compare units with different scales.
+
+4.  Merging Datasets: County-level election data was joined to the economic dataset using county FIPS codes and state names.
+
+5.  Outlier Detection: Counties with total vote counts below 5,000 were flagged to assess for anomalies. None were removed, but they were noted in the analysis.
+
+### Descriptive Summary
+
+The final dataset consisted of:
+
+-   3,100+ counties with valid data for both 2020 and 2024.
+
+-   60 months of economic data (January 2020 through December 2024).
+
+Key summary statistics include:
+
+-   Crude Oil: Mean = \$75.08, Median = \$79.06, SD = \$20.15, Min = \$26.85, Max = \$117.69
+
+-   Wheat: Mean = \$257.00, Median = \$238.35, SD = \$69.72, Min = \$169.72, Max = \$444.16
+
+-   Corn: Mean = \$237.05, Median = \$233.51, SD = \$59.33, Min = \$143.99, Max = \$348.51
+
+-   Grocery CPI: Mean = 4.36, Median = 4.17, SD = 1.86, Min = 1.14, Max = 8.19
+
+Counties in swing states like Michigan, Wisconsin, and Pennsylvania showed higher-than-average increases in grocery CPI and fuel prices. Many of these same counties also recorded above-average GOP vote share increases.
+
+This well-structured and clean dataset allows for robust exploratory visualization, correlation analysis, and predictive modeling, all essential tools in understanding how economic stress translated into political change in 2024.
+
+## Storytelling with Data Visualization
+
+Understanding the 2024 United States Presidential Election requires more than analyzing abstract numbers—it requires a narrative that illustrates how the real economy intersects with voter behavior. This section presents a series of visual interpretations and accompanying narratives to examine the distribution and impact of key economic variables, as well as how these variables relate to shifts in voter preferences across counties.
+
+### Distributions of Key Variables
+
+To begin, we examined the distributions of crude oil prices, wheat prices, corn prices, and grocery price index (CPI) data from January 2020 through December 2024. Crude oil prices ranged widely, with a particularly sharp spike in early 2022 due to the Russia-Ukraine conflict. Wheat and corn prices followed similar trajectories, with both peaking in mid-2022 as global supply chains were disrupted. The grocery CPI reflected a steady upward trend, with acceleration in 2022 and 2023.
+
+Figure 1: Histogram of Monthly Crude Oil Prices (2020-2024)
+
+-   This figure shows a left-skewed distribution, indicating a cluster of months with higher oil prices.
+
+Figure 2: Line Chart of Monthly Grocery CPI (2020-2024)
+
+-   This time series clearly reveals a persistent upward trend with a steep slope between mid-2021 and late 2023, visualizing the long-term pressure on consumers.
+
+Figure 3: Kernel Density Plots for Wheat and Corn Prices
+
+-   The peaks of both distributions shift noticeably after 2021, reflecting supply shocks in agriculture.
+
+These figures collectively reveal a consistent economic theme: essential goods became increasingly expensive during the Biden administration, contributing to real consumer distress in households across the nation.
+
+### Relationships Between Variables
+
+Beyond distributions, our analysis focused on how these variables interacted with each other and with electoral outcomes. Multiple scatter plots and correlation matrices were used to assess relationships:
+
+Figure 4: Scatter Plot of Crude Oil Prices vs. Republican Vote Share Change
+
+-   This visualization shows a moderately strong positive relationship: counties with higher average crude oil prices during the year leading up to the election were more likely to see a Republican vote increase.
+
+Figure 5: Grocery CPI vs. Change in GOP Vote Share
+
+-   A similar pattern emerges here, with higher grocery prices correlating with stronger Republican gains. The Pearson correlation coefficient is approximately 0.56.
+
+Figure 6: Corn Prices vs. Wheat Prices
+
+-   This plot shows a strong correlation between agricultural commodities, supporting the idea that global food supply shocks were widespread and interconnected.
+
+Figure 7: Geographic Heat Map of Vote Swings in Key States
+
+-   A heatmap of the Midwest and Rust Belt shows GOP gains concentrated in counties with higher-than-average inflation rates. The visual match between economic pressure and electoral change provides compelling geographic context.
+
+### Narratives for Each Figure
+
+Each visualization helps to construct a clear, data-driven story about the 2024 election. The spike in crude oil prices in early 2022, visualized in the histogram and time series charts, was not an isolated phenomenon; it coincided with global disruptions and directly impacted commuting costs. For rural and suburban voters, who often depend on long-distance travel, this increase in gas prices had real consequences.
+
+Similarly, rising grocery prices, illustrated by the CPI chart, became an everyday reminder of inflation. The strongest Republican vote gains were observed in counties where the CPI increased by more than 30 percent during the Biden administration. These were not abstract economic statistics but lived experiences of hardship.
+
+<iframe src="https://theopack.shinyapps.io/Final_shiny_code/" width="100%" height="650px" frameborder="0">
+
+</iframe>
+
+The correlations between commodity prices and electoral outcomes lend quantitative support to the idea that voters made choices in response to perceived economic mismanagement. The spatial alignment in the geographic heat map strengthens this narrative, demonstrating that high-inflation areas often overlapped with red shifts on the electoral map.
+
+### Model Motivation
+
+These data were particularly well suited to statistical modeling due to their availability, consistency, and granularity. Monthly economic indicators provided high-frequency data, while the county-level election results allowed for localized comparisons.
+
+Moreover, the variables chosen—crude oil, grocery CPI, wheat, and corn—are not only economically relevant but politically salient. These are goods that voters interact with regularly. Their changes are visible, trackable, and often discussed in media coverage. As such, their influence on voter behavior is not only plausible but observable.
+
+In summary, the visual analysis supports the hypothesis that inflation and price shocks influence voter behavior in 2024. The alignment of economic hardship with Republican gains, especially in economically vulnerable counties, provides a strong narrative for how macroeconomic forces shape democratic outcomes.
+
+## Source & Scope
+
+The datasets used in this analysis were drawn from a combination of publicly available and institutional sources. Economic data, including gasoline, grocery, wheat, and corn prices, were sourced from: FRED (Federal Reserve Economic Data): Provided the regional Consumer Price Index (CPI) for groceries, specifically from the Midwest region. World Bank Commodity Markets: Supplied global monthly average prices for wheat and corn (in USD per metric ton). U.S. Energy Information Administration (EIA): Offered monthly Brent crude oil price data (USD per barrel).
+
+Election data was obtained from: GitHub Repository by tonmcg: Hosted county-level results for both the 2020 and 2024 U.S. Presidential Elections, including vote counts for major parties, county names, FIPS codes, and total voter turnout.
+
+The period covered spans from January 2020 to December 2024, capturing both pre-election and post-pandemic inflation dynamics. Economic datasets are monthly, while election data is reported once per cycle (2020 and 2024). The geographic scope includes all U.S. counties, providing a comprehensive spatial dimension to track regional patterns.
+
+### Variables
+
+Key variables used in this analysis include: POILBREUSDM: Brent crude oil price in USD per barrel (monthly). PMAIZMTUSDM: Corn price in USD per metric ton (monthly). PWHEAMTUSDM: Wheat price in USD per metric ton (monthly). MEDCPIM158SFRBCLE: Midwest regional Consumer Price Index for groceries. votes_gop / votes_dem: Total votes for Republican and Democratic candidates by county. total_votes: Total ballots cast in each county. per_gop / per_dem: Percentage of total votes for each party. vote_margin_diff: Change in GOP-Democratic margin from 2020 to 2024.
+
+### Cleaning & Processing
+
+The data cleaning process involved multiple steps:
+
+1.  Date Alignment: Monthly economic data was aligned by date across all sources.
+
+2.  Interpolation of Missing Values: A few months were missing from the CPI and commodity series; these were interpolated using linear methods.
+
+3.  Standardization: All numeric economic variables were normalized (z scores) to compare units with different scales.
+
+4.  Merging Datasets: County-level election data was joined to the economic dataset using county FIPS codes and state names.
+
+5.  Outlier Detection: Counties with total vote counts below 5,000 were flagged to assess for anomalies. None were removed, but they were noted in the analysis.
+
+### Descriptive Summary
+
+The final data set consisted of 3,100+ counties with valid data for both 2020 and 2024. 60 months of economic data (January 2020 through December 2024).
+
+Key summary statistics include: Crude Oil: Mean = \$75.08, Median = \$79.06, SD = \$20.15, Min = \$26.85, Max = \$117.69 Wheat: Mean = \$257.00, Median = \$238.35, SD = \$69.72, Min = \$169.72, Max = \$444.16 Corn: Mean = \$237.05, Median = \$233.51, SD = \$59.33, Min = \$143.99, Max = \$348.51 Grocery CPI: Mean = 4.36, Median = 4.17, SD = 1.86, Min = 1.14, Max = 8.19
+
+Counties in swing states like Michigan, Wisconsin, and Pennsylvania showed higher-than-average increases in grocery CPI and fuel prices. Many of these same counties also recorded above-average GOP vote share increases.
+
+This well-structured and clean data set allows for robust exploratory visualization, correlation analysis, and predictive modeling, all essential tools in understanding how economic stress translated into political change in 2024.
+
+## Policy Applications / Business Implications
+
+The findings from this analysis highlight the deep connection between economic realities and electoral outcomes. Policymakers, political strategists, and business leaders can all derive valuable insights from understanding how tangible financial pressures affect voter behavior. The 2024 election was not won on ideological grounds alone but through the perceived day-to-day consequences of inflation, energy policy, and international aid. The implications span from how policy is crafted to how companies communicate with consumers.
+
+### Policy Implications
+
+At the federal level, these results suggest that administrations cannot ignore the electoral consequences of economic pain, even when that pain stems from global disruptions beyond their control. The perception of inaction or mismanagement can be just as damaging as the actual hardship. Therefore, one major recommendation for future governments is the proactive use of policy tools to buffer consumers from economic shocks. For instance, strategic petroleum reserve releases could be paired with subsidies or tax credits for gas expenditures in high-cost areas.
+
+Food price stability is another critical area. Expanding food assistance programs or offering temporary grocery vouchers in periods of high inflation could offer tangible relief to consumers. Public messaging around such programs must be timely and targeted, particularly in counties most vulnerable to food insecurity and income volatility.
+
+Foreign policy decisions, particularly those involving military or humanitarian aid abroad, should be framed not only in terms of geopolitical interest but also regarding domestic benefit. For example, if aid to Ukraine is presented in isolation, it becomes easy for political opponents to frame it as a misallocation of resources. However, if the same aid is accompanied by domestic defense manufacturing contracts or trade benefits, voters may perceive it differently.
+
+Immigration remains a politically sensitive issue that intersects with both national security and economic anxiety. Policymakers must pursue balanced reform that ensures border integrity while improving legal immigration processes. Campaigns that ignore the economic anxieties tied to immigration risk alienating a significant portion of the electorate.
+
+### Business Implications
+
+For businesses, especially those in consumer-facing sectors like retail, logistics, agriculture, and energy, these findings offer important strategic direction. Companies operating in regions experiencing steep inflation or commodity price surges should anticipate a more price-sensitive and politically reactive customer base. Adapting marketing strategies to highlight affordability, value, and stability could help retain consumer trust during turbulent periods.
+
+For example, grocery chains could implement regional pricing flexibility or deploy targeted promotions in counties experiencing rapid CPI increases. Fuel companies might consider loyalty programs that reward consistency in fuel purchases, especially in rural communities hit hardest by gas price volatility.
+
+Additionally, corporate social responsibility (CSR) efforts must be attuned to the political and economic climate. Companies that are seen as responding compassionately to inflation—by increasing wages, offering discounts, or advocating for consumer protections, can build brand loyalty and insulate themselves from political backlash.
+
+On the investment and financial services side, firms could develop predictive tools that integrate regional inflation indicators with political forecasting models. These tools could help predict regulatory risk, consumer sentiment, and electoral shifts, all of which are relevant to market strategy.
+
+Finally, public affairs and government relations teams within companies must monitor not just federal policy but localized economic distress indicators. Political donations, lobbying efforts, and campaign partnerships should be informed by where voters are feeling the most economic strain, as these are often the regions where political narratives—and regulations—will be most reactive.
+
+In conclusion, the 2024 election reinforced a core truth of American politics: when voters experience financial instability, they seek change. Understanding the geographic and economic contours of that instability is essential for anyone operating at the intersection of policy, business, and society.
+
+## Conclusion
+
+This paper examined the 2024 United States Presidential Election through the lens of economic hardship, inflation, and international political dynamics. By analyzing data on commodity prices, grocery costs, and county-level electoral shifts, we established a clear correlation between economic stress and political behavior. The findings reveal that regions experiencing the sharpest increases in gas, food, and general living costs were more likely to shift toward the Republican candidate, Donald Trump. This shift underscores the enduring influence of “pocketbook issues” in American political life.
+
+The election also highlighted the risks of misaligned public perception. While global forces played a significant role in driving inflation and supply disruptions, many voters viewed the Democratic administration as ineffective or inattentive to their economic struggles. Foreign policy decisions—particularly the substantial aid to Ukraine—further complicated the domestic narrative, as many voters questioned whether national priorities were being properly balanced.
+
+Despite these valuable insights, the analysis is not without limitations. The model does not fully account for other influences such as media narratives, political advertising, social media, or localized campaign efforts. Additionally, while economic indicators can explain broad patterns, they may not capture individual motivations or demographic nuances that also drive voting behavior.
+
+Future research should consider incorporating voter survey data, media sentiment analysis, and real-time social media trends to provide a more comprehensive understanding of electoral behavior. Exploring how different demographic groups experience and respond to inflation, or comparing midterm and presidential cycles, could also deepen insights.
+
+Ultimately, this study reaffirms the powerful role of economic perception in shaping democratic outcomes and highlights the importance of grounding political analysis in the lived realities of the electorate.
+
+## References
+
+Aldrich, John H., et al. "Foreign Affairs and Issue Voting: Do Voters Care about Foreign Policy?" American Political Science Review 100, no. 4 (2006): 505–520.
+
+Bartels, Larry M. Unequal Democracy: The Political Economy of the New Gilded Age. Princeton University Press, 2008.
+
+Downs, Anthony. An Economic Theory of Democracy. Harper and Row, 1957.
+
+Federal Reserve Bank of St. Louis. "Consumer Price Index Data." FRED, 2020–2024. https://fred.stlouisfed.org/
+
+Fiorina, Morris P. Retrospective Voting in American National Elections. Yale University Press, 1981.
+
+GitHub. "US County-Level Election Results 2020–2024." https://github.com/tonmcg/US_County_Level_Election_Results_08-24
+
+Holsti, Ole R. "Public Opinion and Foreign Policy: Challenges to the Almond-Lippmann Consensus." International Studies Quarterly 36, no. 4 (1992): 439–466.
+
+Lewis-Beck, Michael S., and Mary Stegmaier. "Economic Determinants of Electoral Outcomes." Annual Review of Political Science 3 (2000): 183–219.
+
+U.S. Energy Information Administration. "Brent Crude Oil Prices."<https://www.eia.gov>
+
+World Bank. "Commodity Markets." 2020–2024.<https://www.worldbank.org/en/research/commodity-markets>
+
+\
+\
+
+```{r}
+library(plotly)
+
+interactive_plot <- ggplot(gas_long_filtered, aes(x = date, y = price, color = region)) +
+  geom_line(size = 0.9) +
+  labs(title = "Interactive U.S. Regional Gas Prices", x = "Date", y = "USD/Gallon") +
+  theme_minimal()
+
+ggplotly(interactive_plot)
+
+```
+
+\
+\

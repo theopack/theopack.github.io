@@ -1,0 +1,12 @@
+name: Final_shiny_code
+title: Final_shiny_code
+username: theopack
+account: theopack
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14768348
+bundleId: 10294418
+url: https://theopack.shinyapps.io/Final_shiny_code/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

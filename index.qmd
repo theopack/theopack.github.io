@@ -23,6 +23,7 @@ about:
     - icon: mailbox
       text: Email
       href: mailto:tcp1@geneseo.edu
+<<<<<<< HEAD
 
 ---
 
@@ -38,5 +39,9 @@ Minor in Political Science
 ## Experience
 
 Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024
+=======
+---
+Engineers Country Club | Assistant Tennis Pro | May 2024 - Aug 2024
+>>>>>>> Save local changes before pulling from remote
 
 

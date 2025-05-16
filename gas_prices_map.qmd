@@ -1,0 +1,489 @@
+---
+title: Final Project
+author: Theodore Packert
+---
+```{r}
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(usmap)
+library(ggplot2)
+library(gganimate)
+library(knitr)
+library(readr)
+library(scales)
+library(lubridate)
+library(tigris)
+library(sf)
+library(stringr)
+```
+
+Per state gasoline
+```{r}
+#| eval: false
+gas_data <- read_excel("pswrgvwall.xls", sheet = 4, skip = 2)
+colnames(gas_data)[1] <- "date"
+
+region_states <- list(
+  "Weekly New England (PADD 1A) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)" = c("CT", "ME", "MA", "NH", "RI", "VT"),
+  "Weekly Central Atlantic (PADD 1B) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)" = c("DE", "DC", "MD", "NJ", "NY", "PA"),
+  "Weekly Lower Atlantic (PADD 1C) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)" = c("FL", "GA", "NC", "SC", "VA", "WV"),
+  "Weekly Midwest Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)" = c("IL", "IN", "IA", "KS", "MI", "MN", "MO", "NE", "ND", "OH", "SD", "WI"),
+  "Weekly Gulf Coast Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)" = c("AL", "AR", "KY", "LA", "MS", "NM", "OK", "TN", "TX"),
+  "Weekly Rocky Mountain Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)" = c("CO", "ID", "MT", "UT", "WY"),
+  "Weekly West Coast Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)" = c("AK", "AZ", "CA", "HI", "NV", "OR", "WA")
+)
+
+gas_long <- gas_data %>%
+  select(date, all_of(names(region_states))) %>%
+  pivot_longer(-date, names_to = "region_label", values_to = "price") %>%
+  filter(!is.na(price)) %>%
+  mutate(date = as.Date(date))
+
+gas_state_prices <- gas_long %>%
+  rowwise() %>%
+  mutate(state = list(region_states[[region_label]])) %>%
+  unnest(state)
+
+gas_state_prices$date <- as.Date(gas_state_prices$date)
+
+custom_data <- read.csv("nine_states_data.csv")
+custom_data$date <- as.Date(custom_data$date)
+
+custom_data <- custom_data %>% filter(date >= as.Date("2021-08-02") & date <= as.Date("2022-08-29"))
+
+excluded_states <- c("NY", "CO", "FL", "MA", "MN", "OH", "TX", "WA", "CA")
+region_filtered <- gas_state_prices %>% filter(!state %in% excluded_states)
+combined_data <- bind_rows(region_filtered, custom_data)
+
+weekly_dates <- seq(as.Date("2021-08-02"), as.Date("2022-08-29"), by = "1 week")
+combined_data <- combined_data %>% filter(date %in% weekly_dates)
+
+all_states <- unique(combined_data$state)
+all_weeks <- data.frame(date = rep(weekly_dates, each = length(all_states)), state = rep(all_states, times = length(weekly_dates)))
+combined_data <- left_join(all_weeks, combined_data, by = c("date", "state"))
+
+p_map <- plot_usmap(data = combined_data, values = "price", regions = "states") +
+  scale_fill_continuous(name = "Gas Price ($)", low = "yellow", high = "red", na.value = "grey90") +
+  labs(
+    title = "U.S. Gas Prices by State",
+    subtitle = "{frame_time}",
+    fill = "Price ($)",
+    caption = "Source: U.S. Energy Information Administration (EIA), https://www.eia.gov"
+  ) +
+  theme(legend.position = "right", plot.caption = element_text(size = 8, hjust = 1)) +
+  transition_time(date) +
+  ease_aes("linear")
+
+a <- animate(p_map, fps = 10, width = 1000, height = 600, renderer = gifski_renderer())
+a
+anim_save("/Users/teddypackert/Desktop/DANL 310/Final Project/us_gas_prices.gif", animation = a)
+```
+
+```{r}
+knitr::include_graphics("us_gas_prices.gif")
+```
+
+
+
+
+
+
+
+Regional Gasoline
+```{r}
+gas_data <- read_excel("pswrgvwall.xls", sheet = 4, skip = 2)
+colnames(gas_data)[1] <- "date"
+
+region_columns <- c(
+  "Weekly New England (PADD 1A) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Central Atlantic (PADD 1B) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Lower Atlantic (PADD 1C) Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Midwest Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Gulf Coast Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly Rocky Mountain Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)",
+  "Weekly West Coast Regular All Formulations Retail Gasoline Prices  (Dollars per Gallon)"
+)
+
+gas_long <- gas_data %>%
+  select(date, all_of(region_columns)) %>%
+  pivot_longer(-date, names_to = "region", values_to = "price") %>%
+  filter(!is.na(price)) %>%
+  mutate(
+    date = as.Date(date),
+    region = gsub("Weekly |Regular.*|\\(.*\\)", "", region),  # clean names
+    region = trimws(region)
+  )
+
+gas_long_filtered <- gas_long %>%
+  filter(date >= as.Date("2015-01-01") & date <= as.Date("2025-01-01"))
+
+plot <- ggplot(gas_long_filtered, aes(x = date, y = price, color = region)) +
+  geom_line(size = 0.9) +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed", color = "black") +
+  annotate("text", 
+           x = as.Date("2022-02-24") - 580,
+           y = 5.8,
+           label = "Feb 24, 2022\nInvasion Begins", 
+           hjust = 0, vjust = 1, size = 3.5) +
+  scale_y_continuous(
+    labels = dollar_format(),
+    breaks = seq(1, 6.5, by = 0.5)
+  ) +
+  labs(
+    title = "U.S. Regional Gasoline Prices (2015–2025)",
+    x = "Date",
+    y = "Price (USD per Gallon)",
+    color = "Region",
+    caption = "Source: U.S. Energy Information Administration (EIA)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+plot
+
+# ggsave("regional_gas_prices.png", plot = plot, width = 12, height = 7, dpi = 300)
+
+```
+
+
+
+Wheat and Corn
+```{r}
+
+wheat <- read_csv("PWHEAMTUSDM.csv") %>%
+  mutate(Year = year(as.Date(observation_date))) %>%
+  group_by(Year) %>%
+  summarize(Wheat = mean(PWHEAMTUSDM, na.rm = TRUE))
+
+maize <- read_csv("PMAIZMTUSDM.csv") %>%
+  mutate(Year = year(as.Date(observation_date))) %>%
+  group_by(Year) %>%
+  summarize(Maize = mean(PMAIZMTUSDM, na.rm = TRUE))
+
+ag_prices <- full_join(wheat, maize, by = "Year") %>%
+  filter(Year >= 2015, Year <= 2025) %>%
+  pivot_longer(cols = -Year, names_to = "Item", values_to = "Price")
+
+p <- ggplot(ag_prices, aes(x = Year, y = Price, color = Item)) +
+  geom_line(linewidth = 1) +
+  geom_vline(xintercept = 2022, linetype = "dashed", color = "black") +
+  annotate("text",
+           x = 2022.3,
+           y = max(ag_prices$Price, na.rm = TRUE) * 0.95,
+           label = "Feb 24, 2022\nInvasion Begins",
+           hjust = 0, size = 3.5) +
+  scale_x_continuous(breaks = 2015:2025) +
+  scale_y_continuous(labels = dollar_format()) +
+  labs(
+    title = "Global Wheat and Maize Prices (2015–2025)",
+    x = "Year",
+    y = "Average Price (USD per Metric Ton)",
+    color = "Commodity",
+    caption = "Source: FRED (Federal Reserve Bank of St. Louis), IMF Primary Commodity Prices"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 9),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+# ggsave("wheat_maize_agstyle.png", p, width = 10, height = 6, dpi = 300)
+p
+
+```
+
+
+Grocery Prices
+```{r}
+ag_data <- read_csv("ag_prices_named_final.csv")
+
+ag_long <- ag_data %>%
+  pivot_longer(cols = -Year, names_to = "Item", values_to = "Price")
+
+items_over_2 <- ag_long %>%
+  group_by(Item) %>%
+  filter(max(Price, na.rm = TRUE) > 2) %>%
+  ungroup()
+
+p <- ggplot(items_over_2, aes(x = Year, y = Price, color = Item)) +
+  geom_line(linewidth = 1) +
+  geom_vline(xintercept = 2022, linetype = "dashed", color = "black") +
+  annotate("text",
+           x = 2022.3,
+           y = max(items_over_2$Price, na.rm = TRUE) * 0.95,
+           label = "Feb 24, 2022\nInvasion Begins",
+           hjust = 0, size = 3.5) +
+  scale_x_continuous(breaks = 2015:2025) +
+  scale_y_continuous(labels = dollar_format()) +
+  labs(
+    title = "U.S. Agricultural Prices by Item (2015–2025)",
+    x = "Year",
+    y = "Average Price (USD)",
+    color = "Item",
+    caption = "Source: U.S. Bureau of Labor Statistics"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 9),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+
+# ggsave("ag_prices_over2.png", p, width = 10, height = 6, dpi = 300)
+p
+
+```
+
+
+natural gas 
+```{r}
+
+natgas <- read_csv("PNGASEUUSDM.csv")
+
+natgas <- natgas %>%
+  rename(date = observation_date) %>%
+  mutate(date = as.Date(date)) %>%
+  filter(date >= as.Date("2015-01-01") & date <= as.Date("2025-01-01"))
+
+ggplot(natgas, aes(x = date, y = PNGASEUUSDM)) +
+  geom_line(color = "darkorange", size = 1) +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed", color = "black") +
+  annotate("text", x = as.Date("2021-12-01"), y = max(natgas$PNGASEUUSDM, na.rm = TRUE) * 0.95,
+           label = "Feb 24, 2022\nInvasion Begins", size = 3.5, hjust = 0) +
+  scale_y_continuous(labels = dollar_format(prefix = "$")) +
+  labs(
+    title = "Natural Gas Prices (2015–2025)",
+    x = "Date",
+    y = "Price (USD per Million BTU)",
+    caption = "Source: U.S. Energy Information Administration (EIA)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# ggsave("natural_gas_prices_2015_2025.png", width = 10, height = 6)
+
+```
+
+crude oil
+```{r}
+oil <- read_csv("POILBREUSDM.csv")
+
+oil <- oil %>%
+  rename(date = observation_date, price = POILBREUSDM) %>%
+  mutate(date = as.Date(date)) %>%
+  filter(date >= as.Date("2015-01-01") & date <= as.Date("2025-01-01"))
+
+l <- ggplot(oil, aes(x = date, y = price)) +
+  geom_line(color = "darkgreen", size = 1) +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed", color = "black") +
+  annotate("text", x = as.Date("2022-02-24") + 150, y = max(oil$price, na.rm = TRUE) - 5,
+           label = "Feb 24, 2022\nInvasion Begins", hjust = 0, size = 3.5, color = "black") +
+  scale_y_continuous(labels = dollar_format(prefix = "$")) +
+  labs(
+    title = "Brent Crude Oil Prices (2015–2025)",
+    x = "Date",
+    y = "Price (USD per Barrel)",
+    caption = "Source: U.S. Energy Information Administration (EIA)"
+  ) +
+  theme_minimal()
+l
+
+# ggsave("brent_crude_prices.png", width = 10, height = 6, dpi = 300)
+
+```
+
+
+Presidential Elections
+```{r}
+options(tigris_use_cache = TRUE)
+
+counties <- counties(cb = TRUE, year = 2018) %>%
+  filter(!STATEFP %in% c("02", "15", "72")) %>%  # exclude AK, HI, PR
+  mutate(fips = GEOID)
+
+data_2020 <- read_csv("2020_US_County_Level_Presidential_Results.csv") %>%
+  mutate(
+    county_fips = as.character(county_fips),
+    fips = str_pad(county_fips, 5, pad = "0"),
+    margin_2020 = per_dem - per_gop
+  ) %>%
+  select(fips, margin_2020)
+
+data_2024 <- read_csv("2024_US_County_Level_Presidential_Results.csv") %>%
+  mutate(
+    county_fips = as.character(county_fips),
+    fips = str_pad(county_fips, 5, pad = "0"),
+    margin_2024 = per_dem - per_gop
+  ) %>%
+  select(fips, margin_2024)
+
+data_2024 <- data_2024 %>% filter(!str_starts(fips, "091"))
+
+ct_patch_2024 <- tibble(
+  fips = c("09001", "09003", "09005", "09007", "09009", "09011", "09013", "09015"),
+  margin_2024 = c(0.23, 0.22, 0.04, 0.13, 0.20, 0.12, 0.01, -0.02)
+)
+
+data_2024 <- bind_rows(data_2024, ct_patch_2024)
+
+joined <- full_join(data_2020, data_2024, by = "fips") %>%
+  mutate(margin_shift = margin_2024 - margin_2020)
+
+map_2020 <- left_join(counties, data_2020, by = "fips")
+map_2024 <- left_join(counties, data_2024, by = "fips")
+map_shift <- left_join(counties, joined, by = "fips")
+
+zoom_window <- coord_sf(xlim = c(-125, -66), ylim = c(24, 50))
+lim <- c(-1, 1)
+
+p1 <- ggplot(map_2020) +
+  geom_sf(aes(fill = margin_2020), color = NA) +
+  scale_fill_gradient2(low = "red", mid = "white", high = "blue",
+                       midpoint = 0, limits = lim, name = "Dem Margin") +
+  labs(title = "2020 Election Result") +
+  zoom_window +
+  theme_void()
+p1
+# ggsave("margin_2020_map.png", plot = p1, width = 12, height = 8, dpi = 300)
+
+p2 <- ggplot(map_2024) +
+  geom_sf(aes(fill = margin_2024), color = NA) +
+  scale_fill_gradient2(low = "red", mid = "white", high = "blue",
+                       midpoint = 0, limits = lim, name = "Dem Margin") +
+  labs(title = "2024 Election Result") +
+  zoom_window +
+  theme_void()
+p2
+# ggsave("margin_2024_map.png", plot = p2, width = 12, height = 8, dpi = 300)
+
+p3 <- ggplot(map_shift) +
+  geom_sf(aes(fill = margin_shift), color = NA) +
+  scale_fill_gradient2(low = "red", mid = "white", high = "blue",
+                       midpoint = 0, name = "Shift in Margin") +
+  labs(title = "Difference Between 2020 vs 2024") +
+  zoom_window +
+  theme_void()
+p3
+# ggsave("margin_shift_map.png", plot = p3, width = 12, height = 8, dpi = 300)
+
+```
+
+
+
+new york election shift
+```{r}
+ny_counties <- counties %>%
+  filter(STATEFP == "36") %>%
+  mutate(fips = GEOID)
+
+ny_data_2020 <- data_2020 %>%
+  filter(str_starts(fips, "36"))
+
+ny_data_2024 <- data_2024 %>%
+  filter(str_starts(fips, "36"))
+
+ny_joined <- full_join(ny_data_2020, ny_data_2024, by = "fips") %>%
+  mutate(margin_shift = margin_2024 - margin_2020)
+
+ny_map_shift <- left_join(ny_counties, ny_joined, by = "fips")
+
+p_ny <- ggplot(ny_map_shift) +
+  geom_sf(aes(fill = margin_shift), color = "white", size = 0.2) +
+  scale_fill_gradient2(low = "red", mid = "white", high = "blue",
+                       midpoint = 0, name = "Shift in Margin") +
+  labs(title = "Shift in Voting Margin: 2020 vs 2024 New York State") +
+  theme_void()
+p_ny
+
+# ggsave("ny_margin_shift_map.png", plot = p_ny, width = 10, height = 8, dpi = 300)
+```
+
+
+
+inflation
+```{r}
+inflation <- read_csv("MEDCPIM158SFRBCLE.csv")
+
+inflation <- inflation %>%
+  rename(date = observation_date, inflation_rate = MEDCPIM158SFRBCLE) %>%
+  mutate(date = as.Date(date)) %>%
+  filter(date >= as.Date("2015-01-01") & date <= as.Date("2025-01-01"))
+
+inflation_plot <- ggplot(inflation, aes(x = date, y = inflation_rate)) +
+  geom_line(color = "steelblue", size = 1.1) +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed", color = "black") +
+  annotate("text",
+           x = as.Date("2022-02-24") - 850,
+           y = max(inflation$inflation_rate, na.rm = TRUE) - 1,
+           label = "Feb 24, 2022\nInvasion Begins", color = "black", size = 3.5, hjust = 0) +
+  scale_y_continuous(labels = percent_format(scale = 1)) +
+  labs(
+    title = "U.S. Annual Inflation Rate (2015–2025)",
+    x = "Date",
+    y = "Inflation Rate (%)",
+    caption = "Source: World Bank"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+inflation_plot
+
+# ggsave("us_inflation_rate.png", width = 10, height = 6, dpi = 300)
+```
+
+approval rates for biden
+```{r}
+df <- read_csv("APNORC_feb2023_PUF.csv", locale = locale(encoding = "latin1"))
+
+df_long <- df %>%
+  select(
+    economy = CURY2A,
+    foreign_policy = CURY2B,
+    immigration = CURY2C
+  ) %>%
+  pivot_longer(cols = everything(), names_to = "issue", values_to = "response") %>%
+  mutate(
+    response = str_remove(response, "^\\(\\d+\\)\\s*")
+  ) %>%
+  drop_na()
+
+df_percent <- df_long %>%
+  count(issue, response) %>%
+  group_by(issue) %>%
+  mutate(percent = 100 * n / sum(n))
+
+label_map <- c(
+  "Strongly approve" = "Strongly approve",
+  "Somewhat approve" = "Somewhat approve",
+  "Somewhat disapprove" = "Somewhat disapprove",
+  "Strongly disapprove" = "Strongly disapprove",
+  "DON'T KNOW/SKIPPED ON WEB/REFUSED (VOL)" = "N/A"
+)
+
+ggplot(df_percent, aes(x = response, y = percent, fill = response)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ issue, scales = "free_x", labeller = as_labeller(c(
+    economy = "The Economy",
+    foreign_policy = "Foreign Policy",
+    immigration = "Immigration"
+  ))) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  scale_x_discrete(labels = label_map) +
+  labs(
+    title = "President Biden's Approval Ratings by Issue (Feb 2023)",
+    y = "Percentage",
+    x = NULL,
+    caption = "Source: AP-NORC Center for Public Affairs Research"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(hjust = 0)
+  ) 
+# ggsave("biden_approval_by_issue.png", width = 10, height = 6, dpi = 300)
+
+```
+

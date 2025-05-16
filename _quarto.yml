@@ -10,7 +10,8 @@ website:
     left:
       - text: Blog
         href: blog-listing.qmd
-            
+      - text: Project
+        href: gas_prices_map.qmd
   page-footer: 
     center: "Powered with GitHub, Quarto, and Jupyter Notebook<br>© YOUR NAME, 2025"
 

@@ -1,0 +1,113 @@
+---
+title: "Project Dashboard"
+format:
+  html:
+    dashboard:
+      orientation: rows
+      sidebar:
+        background: light
+      page-navigation: true
+    theme: flatly
+    toc: false
+    page-layout: full
+    css: styles.css
+
+website:
+  title: "Theodore Packert"
+  navbar:
+    pinned: true
+    left:
+      - text: Blog
+        href: blog-listing.qmd
+      - text: Project
+        href: gas_prices_map.qmd
+      - text: Dashboard
+        href: project-dashboard.qmd
+  page-footer:
+    center: "Powered with GitHub, Quarto, and RStudio<br>© Theodore Packert, 2025"
+---
+
+# Summary
+
+::: {.value-box appearance="default"}
+## Avg Gas Price (2022)
+
+\$4.11
+:::
+
+::: {.value-box appearance="default"}
+## Peak Crude Oil (Mar 2022)
+
+\$123.64
+:::
+
+::: {.value-box appearance="default"}
+## Median Natural Gas (2022)
+
+\$6.12
+:::
+
+::: {.value-box appearance="default"}
+## CPI Inflation (Jun 2022)
+
+9.1%
+:::
+
+# Visualizations {.page-layout-full}
+
+```{r}
+library(tidyverse)
+library(readr)
+library(scales)
+library(reactable)
+library(patchwork)
+library(lubridate)
+library(zoo)
+
+natgas <- read_csv("PNGASEUUSDM.csv") %>%
+  rename(date = observation_date, price = PNGASEUUSDM) %>%
+  mutate(date = as.Date(date)) %>%
+  filter(year(date) >= 2015 & year(date) <= 2025)
+
+p1 <- ggplot(natgas, aes(x = date, y = price)) +
+  geom_line(color = "darkorange") +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed") +
+  labs(title = "Natural Gas Prices", y = "USD/MMBTU", x = NULL) +
+  theme_minimal()
+
+wheat <- read_csv("PWHEAMTUSDM.csv") %>%
+  mutate(date = as.Date(observation_date))
+
+p2 <- ggplot(wheat, aes(x = date, y = PWHEAMTUSDM)) +
+  geom_line(color = "tan") +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed") +
+  labs(title = "Wheat Prices (USD/ton)", y = NULL, x = NULL) +
+  theme_minimal()
+
+oil <- read_csv("POILBREUSDM.csv") %>%
+  mutate(date = as.Date(observation_date))
+
+p3 <- ggplot(oil, aes(x = date, y = POILBREUSDM)) +
+  geom_line(color = "steelblue") +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed") +
+  labs(title = "Brent Crude Oil (USD/barrel)", y = NULL, x = NULL) +
+  theme_minimal()
+
+cpi <- read_csv("FPCPITOTLZGUSA.csv") %>%
+  mutate(date = as.Date(as.yearmon(as.character(observation_date), "%Y-%m")))
+
+p4 <- ggplot(cpi, aes(x = date, y = FPCPITOTLZGUSA)) +
+  geom_line(color = "forestgreen") +
+  geom_vline(xintercept = as.Date("2022-02-24"), linetype = "dashed") +
+  labs(title = "U.S. CPI Inflation Rate (%)", y = NULL, x = NULL) +
+  theme_minimal()
+
+(p1 | p2) / (p3 | p4)
+```
+
+# Agricultural Price Table
+
+```{r}
+ag <- read_csv("ag_prices_named_final.csv")
+reactable::reactable(head(ag, 10), searchable = TRUE, bordered = TRUE, highlight = TRUE)
+```
