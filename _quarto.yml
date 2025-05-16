@@ -1,11 +1,10 @@
 project: 
   type: website
-  output-dir: "." 
+  output-dir: "docs"  # GitHub Pages expects files in /docs or root directory
 
 website:
-  title: "Theodore Packert's Website"
+  title: "Theodore Packert"
   navbar:
-    # background: "#1c4982"
     pinned: true
     left:
       - text: Blog
@@ -17,16 +16,15 @@ website:
       - text: Dashboard
         href: dashboard.qmd
   page-footer: 
-    center: "Powered with GitHub, Quarto, and Jupyter Notebook<br>© YOUR NAME, 2025"
+    center: "Powered with GitHub, Quarto, and Jupyter Notebook<br>© Theodore Packert, 2025"
 
 format:
   html:
     theme: 
-      light: flatly # flatly sandstone yeti united litera journal
-      dark: darkly #  darkly cyborg slate solra superhero
-    mainfont: system-ui; 
-    highlight-style: atom-one  # atom-one espresso
+      light: flatly
+      dark: darkly
+    mainfont: system-ui
+    highlight-style: atom-one
     css: styles.css
     toc: false
     include-after-body: target_blank.html
-
