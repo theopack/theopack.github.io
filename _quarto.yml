@@ -3,7 +3,7 @@ project:
   output-dir: "." 
 
 website:
-  title: "YOUR NAME"
+  title: "Theodore Packert's Website"
   navbar:
     # background: "#1c4982"
     pinned: true
@@ -12,6 +12,10 @@ website:
         href: blog-listing.qmd
       - text: Project
         href: gas_prices_map.qmd
+      - text: Write Up
+        href: write_up.qmd
+      - text: Dashboard
+        href: dashboard.qmd
   page-footer: 
     center: "Powered with GitHub, Quarto, and Jupyter Notebook<br>© YOUR NAME, 2025"
 
