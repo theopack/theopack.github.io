@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>YOUR NAME</title>
+<title>Theodore Packert – YOUR NAME</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +32,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -107,27 +106,55 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<div class="quarto-about-trestles">
+  <div class="about-entity">
+    <img src="img/profile.png" class="about-image
+  rounded " style="width: 16em;">
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Theodore Packert</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header>
+    <div class="about-links">
+  <a href="https://linkedin.com/in/theodore-packert" class="about-link" rel="" target="">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://instagram.com/teddypackert16" class="about-link" rel="" target="">
+    <i class="bi bi-instagram"></i>
+     <span class="about-link-text">Instagram</span>
+  </a>
+  <a href="https://github.com/theopack/theopack.github.io" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">GitHub</span>
+  </a>
+  <a href="/resume-example.pdf" class="about-link" rel="" target="_blank">
+    <i class="bi bi-file-earmark-pdf"></i>
+     <span class="about-link-text">Resumé</span>
+  </a>
+  <a href="mailto:tcp1@geneseo.edu" class="about-link" rel="" target="">
+    <i class="bi bi-mailbox"></i>
+     <span class="about-link-text">Email</span>
+  </a>
+</div>
+  </div>
+  <div class="about-contents"><main class="content" id="quarto-document-content">
+<p>Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.</p>
+<section id="education" class="level2">
+<h2 data-anchor-id="education">Education</h2>
+<p>State University of New York at Geneseo | Geneseo, NY <br> B.S. in Data Analytics | Aug 2022 - May 2026 <br> Minor in Political Science</p>
+</section>
+<section id="experience" class="level2">
+<h2 data-anchor-id="experience">Experience</h2>
+<p>Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024</p>
 
 
-
-
-<p>Share</p>
-<p>You said: Add a menu of “Project” to the navigation bar using danl_proj_nba.ipynb. ChatGPT said: To add a “Project” menu to your Quarto website’s navigation bar, follow these steps:</p>
-<p>Locate your _quarto.yml file This file contains the configuration for your Quarto website.</p>
-<p>Modify the navbar section Add an entry for the “Project” menu and link it to danl_proj_nba.ipynb.</p>
-<p>Example _quarto.yml update: yaml Copy Edit project: type: website</p>
-<p>website: title: “Your Website Title” navbar: left: - text: “Home” href: index.qmd - text: “Project” href: danl_proj_nba.ipynb This will add “Project” to the navigation bar, linking it to danl_proj_nba.ipynb. If you need it to appear as a dropdown with multiple project-related pages, you can structure it like this:</p>
-<p>yaml Copy Edit navbar: left: - text: “Home” href: index.qmd - text: “Project” menu: - text: “NBA Analysis” href: danl_proj_nba.ipynb Rebuild your Quarto site Run the following in the terminal to render the site: sh Copy Edit quarto render Then, preview it: sh Copy Edit quarto preview Let me know if you need any refinements! 🚀</p>
-<hr>
-<p>title: “Theodore Packert”</p>
-<p>about: template: trestles # jolla trestles solana marquee broadside image: img/profile.png image-width: 16em image-shape: rounded # rectangle round rounded</p>
-<p>links: - icon: linkedin text: LinkedIn href: https://linkedin.com/in/theodore-packert - icon: instagram text: Instagram href: https://instagram.com/teddypackert16 - icon: github text: GitHub href: https://github.com/theopack/theopack.github.io - icon: file-earmark-pdf text: Resumé href: UpdatedResume.pdf target: _blank - icon: mailbox text: Email href: mailto:tcp1@geneseo.edu</p>
-<p>Engineers Country Club | Assistant Tennis Pro | May 2024 - Aug 2024</p>
-
-
-
-</main> <!-- /main -->
+</section>
+</main></div>
+</div>
+ <!-- /main -->
 <script type="text/javascript" src="links.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -293,13 +320,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
