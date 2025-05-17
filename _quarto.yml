@@ -16,7 +16,7 @@ website:
       - text: Dashboard
         href: dashboard.qmd
       - text: 210 Final
-        href: danl_210_PACKERT_THEODORE_stock_ESG.html
+        href: final-210.qmd
   page-footer: 
     center: "Powered with GitHub, Quarto, and Jupyter Notebook<br>© Theodore Packert, 2025"
 
