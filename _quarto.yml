@@ -1,6 +1,6 @@
 project: 
   type: website
-  output-dir: "docs"  # GitHub Pages expects files in /docs or root directory
+  output-dir: docs
 
 website:
   title: "Theodore Packert"
