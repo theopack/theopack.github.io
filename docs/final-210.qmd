@@ -1,8 +1,0 @@
----
-title: "DANL 210 Project"
-format: html
----
-
-<iframe src="danl_210_PACKERT_THEODORE_stock_ESG.html" width="100%" height="1000px" style="border:none;">
-
-</iframe>
