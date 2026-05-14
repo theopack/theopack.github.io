@@ -16,8 +16,8 @@ website:
             href: notes/danl-ggplot.qmd
           - text: Data Transformation with `dplyr`
             href: notes/danl-dplyr.qmd
-      - text: Blog
-        href: blog-listing.qmd
+      - text: DANL 320 Write Up
+        href: danl_320_writeup.html
       
             
   # page-footer: 
