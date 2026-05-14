@@ -1,5 +1,5 @@
 ---
-title: "YOUR NAME" 
+title: "Theodore Packert" 
 about:
   template: jolla  # jolla  trestles  solana  marquee  broadside
   image: img/profile.png
@@ -9,30 +9,29 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://linkedin.com/in/theodore-packert
     - icon: github
       text: GitHub
-      href: https://github.com
+      href: https://github.com/
     - icon: file-earmark-pdf
       text: Resumé
-      href: resume-example.pdf
+      href: Resume_2026_copy.pdf
       target: _blank
     - icon: mailbox
       text: Email
-      href: mailto:YOUR_EMAIL@geneseo.edu
+      href: mailto:tcp1@geneseo.edu
 ---
 
 
-Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.
+Theodore Packert is a recent graduate from SUNY Geneseo.
 
 ## Education
 
 State University of New York at Geneseo | Geneseo, NY <br>
-B.S. in Data Analytics | Aug 2023 - May 2027 <br>
-Minor in Economics
+B.S. in Data Analytics | Aug 2022 - May 2026 <br>
+Minor in Political Science
 
 ## Experience
 
-Starbucks Analytics | Data Analyst Intern | May 2025 - Aug 2025
 
 

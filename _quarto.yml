@@ -3,13 +3,13 @@ project:
   output-dir: "." 
 
 website:
-  title: "YOUR NAME"
+  title: "Theodore Packert"
   navbar:
     # background: "#1c4982"
     pinned: true
     left:
       - text: Project
-        href: danl-research-template.qmd
+        href: danl-research-template.html
       - text: Data Analysis
         menu: 
           - text: Data Visualization with `ggplot`
@@ -21,7 +21,7 @@ website:
       
             
   # page-footer: 
-  #   center: "Powered with GitHub and Quarto<br>© YOUR NAME, 2026"
+  #   center: "Powered with GitHub and Quarto<br>© Theodore Packert, 2026"
 
 format:
   html:
