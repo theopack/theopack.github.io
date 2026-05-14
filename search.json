@@ -1,10 +1,563 @@
 [
   {
-    "objectID": "blog-listing.html",
-    "href": "blog-listing.html",
-    "title": "Data Analytics",
+    "objectID": "danl-research-template-tp_copy.html",
+    "href": "danl-research-template-tp_copy.html",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nAnalysis of Ben & Jerry’s Ice Cream Data\n\n\n\n\n\nFeb 11, 2026\n\n\nByeong-Hak Choe\n\n2 min\n\n\n\n\n\n\n\n\n\n\n\nStarwars\n\n\n\n\n\nJan 23, 2026\n\n\nYour Name\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\nJan 22, 2026\n\n\nYOUR NAME\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\nJan 21, 2026\n\n\nYOUR NAME\n\n1 min\n\n\n\n\nNo matching items"
+    "text": "Data centers have become essential infrastructure in the modern economy. As cloud computing, artificial intelligence, streaming services, and digital storage continue to expand, the demand for large-scale computing facilities has increased rapidly across the United States. New York State has experienced significant growth in data center development, particularly in and around major metropolitan areas such as New York City, Buffalo, Rochester, and Albany. While these facilities provide important technological and economic benefits, communities have increasingly raised questions about their potential local environmental and quality-of-life impacts.\nOne of the primary concerns surrounding data centers is their substantial energy demand. Large facilities require continuous electricity to operate servers and cooling systems, and many also rely on backup diesel generators for reliability during outages or peak demand periods. Critics argue that these facilities may contribute to localized pollution, increased strain on energy infrastructure, noise exposure, and other environmental burdens. Supporters, however, argue that modern data centers are generally cleaner than traditional industrial facilities and that many environmental concerns may be overstated.\nThis project examines whether areas located near data centers in New York State are associated with higher levels of PM2.5, a widely used measure of fine particulate air pollution. PM2.5 is an important environmental and public health indicator because exposure to elevated levels has been linked to respiratory and cardiovascular health risks. The central research question of this project is:\nAre areas near data centers associated with higher PM2.5 levels?\nTo answer this question, I combine EPA air quality monitoring data, Census tract socioeconomic data, and geocoded data center locations throughout New York State. The analysis focuses on four metropolitan regions: New York City, Buffalo, Rochester, and Albany. I compare monitoring locations based on their proximity to the nearest data center while controlling for income, housing characteristics, population, industrial activity, and metro-level differences.\nThe empirical strategy primarily relies on regression analysis and geospatial distance measures. In addition, I incorporate a machine learning component using random forest models to explore whether more flexible predictive approaches identify similar patterns. The project is primarily descriptive and inferential rather than fully causal. While the analysis cannot definitively establish causation, it provides evidence regarding whether localized environmental differences are associated with proximity to data centers.\nThe results suggest that areas within one mile of a data center tend to have higher PM2.5 levels relative to areas located farther away, although the effect appears localized rather than widespread. The relationship becomes visible after controlling for socioeconomic and regional differences, highlighting the importance of accounting for confounding factors when evaluating environmental outcomes.\nThe broader contribution of this project is to provide a localized environmental analysis of data center proximity within New York State. Rather than arguing that data centers are inherently harmful, the goal is to better understand how these facilities may interact with surrounding communities and how policymakers and planners can manage future development responsibly."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#data-sources",
+    "href": "danl-research-template-tp_copy.html#data-sources",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.1 Data Sources",
+    "text": "3.1 Data Sources\nThis project combines three primary datasets:\n\nEPA Air Quality System (AQS) PM2.5 monitoring data\nU.S. Census American Community Survey (ACS) tract-level socioeconomic data\nGeocoded data center location data\n\nThe EPA AQS data provide daily PM2.5 observations for monitoring sites across New York State from 2020 through 2025. These observations are aggregated into yearly averages for each monitoring location.\nSocioeconomic variables are obtained from the American Community Survey 5-year estimates. These variables include median household income, median home value, median rent, total population, and an industrial activity proxy.\nData center locations were collected from publicly available facility lists and geocoded using OpenStreetMap geocoding services. Geographic coordinates were used to calculate the distance from each monitoring location to the nearest data center."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#unit-of-observation",
+    "href": "danl-research-template-tp_copy.html#unit-of-observation",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.2 Unit of Observation",
+    "text": "3.2 Unit of Observation\nThe primary unit of observation is a PM2.5 monitoring site-year observation. Each row in the final dataset represents the yearly average PM2.5 level observed at a monitoring location within a given year."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#geographic-scope",
+    "href": "danl-research-template-tp_copy.html#geographic-scope",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.3 Geographic Scope",
+    "text": "3.3 Geographic Scope\nThe analysis focuses on four New York metropolitan regions:\n\nNew York City\nBuffalo\nRochester\nAlbany\n\nThese metro areas were selected because they contain both PM2.5 monitoring infrastructure and significant concentrations of data center facilities."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#key-variables",
+    "href": "danl-research-template-tp_copy.html#key-variables",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.4 Key Variables",
+    "text": "3.4 Key Variables\n\n3.4.1 Outcome Variable\n\nPM2.5 Mean: Yearly average PM2.5 concentration measured at EPA monitoring sites.\n\n\n\n3.4.2 Main Explanatory Variables\n\nDistance to Nearest Data Center: Continuous distance in miles between a monitoring site and the nearest data center.\nDistance Bands: Categorical indicators representing:\n\nWithin 1 mile\n1–3 miles\nOver 3 miles\n\n\n\n\n3.4.3 Control Variables\n\nMedian household income\nMedian home value\nMedian rent\nTotal population\nIndustrial activity share\nMetro fixed effects\n\nThe industrial activity variable is constructed as the share of employed residents working in construction, manufacturing, transportation, warehousing, and utilities occupations. This variable serves as a proxy for underlying industrial intensity."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#data-cleaning-and-processing",
+    "href": "danl-research-template-tp_copy.html#data-cleaning-and-processing",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.5 Data Cleaning and Processing",
+    "text": "3.5 Data Cleaning and Processing\nThe EPA PM2.5 files were imported and combined across years using R. Key variables such as coordinates, pollutant measurements, and dates were converted into consistent formats. Monitoring observations outside New York State were removed.\nData center addresses were cleaned and geocoded to obtain latitude and longitude coordinates. PM2.5 monitoring locations and Census tracts were converted into spatial objects using the sf package. Distances to the nearest data center were calculated using projected coordinate systems."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#summary-statistics",
+    "href": "danl-research-template-tp_copy.html#summary-statistics",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.6 Summary Statistics",
+    "text": "3.6 Summary Statistics\nAverage PM2.5 levels vary across metro areas. New York City exhibits the highest average PM2.5 levels, while Albany and Rochester show lower average pollution levels.\n\n\n\nMetro\nAverage PM2.5\n\n\n\n\nAlbany\n6.78\n\n\nBuffalo\n7.34\n\n\nNYC\n8.89\n\n\nRochester\n6.89\n\n\n\nThe descriptive statistics indicate substantial regional variation, highlighting the importance of controlling for metro-level differences in the empirical analysis."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#data-limitations",
+    "href": "danl-research-template-tp_copy.html#data-limitations",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.7 Data Limitations",
+    "text": "3.7 Data Limitations\nSeveral limitations should be acknowledged. First, data centers are often located in already industrial or urbanized areas, making causal interpretation difficult. Second, precise facility-level opening dates and emissions data are not consistently available. Third, PM2.5 monitors are not evenly distributed geographically, which may introduce spatial coverage limitations."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#regression-analysis",
+    "href": "danl-research-template-tp_copy.html#regression-analysis",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.1 Regression Analysis",
+    "text": "4.1 Regression Analysis\nThe primary empirical approach uses ordinary least squares (OLS) regression to estimate the relationship between PM2.5 and proximity to data centers.\nThe baseline specification is:\n$$ PM2.5_i = _0 + _1 _i + _2 _i\n\n_3 _i + _4 _i\n_5 _i + _6 _i\n_7 _i\n_m + _i $$\n\nWhere:\n\n\\(PM2.5_i\\) is the yearly average PM2.5 level\nDistance variables measure proximity to data centers\n\\(X_i\\) represents socioeconomic control variables\n\\(\\gamma_m\\) represents metro fixed effects\n\\(\\varepsilon_i\\) is the error term\n\nThe reference category for the distance-band analysis is locations more than three miles from a data center.\nMetro fixed effects are included to control for baseline regional differences across NYC, Buffalo, Rochester, and Albany. This allows the analysis to focus on within-metro variation rather than broad statewide differences."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#continuous-distance-model",
+    "href": "danl-research-template-tp_copy.html#continuous-distance-model",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.2 Continuous Distance Model",
+    "text": "4.2 Continuous Distance Model\nA secondary specification replaces the categorical distance bands with a continuous distance variable:\n$$ PM2.5_i = _0 + _1 _i\n\n_2 _i + _3 _i\n_4 _i + _5 _i\n_6 _i\n_m + _i $$\n\nThis specification tests whether PM2.5 changes gradually with distance."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#machine-learning-component",
+    "href": "danl-research-template-tp_copy.html#machine-learning-component",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.3 Machine Learning Component",
+    "text": "4.3 Machine Learning Component\nIn addition to regression analysis, I implement a random forest model to explore predictive relationships between PM2.5 and the explanatory variables.\nThe machine learning objective can be summarized as:\n\\[\n\\hat{PM2.5}_i = f(\\text{Distance}_i, X_i)\n\\]\nThe random forest model uses an 80/20 train-test split. Model performance is evaluated using RMSE and MAE metrics. The machine learning component is primarily exploratory and intended to complement the regression analysis rather than replace it."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#interpretation-and-identification",
+    "href": "danl-research-template-tp_copy.html#interpretation-and-identification",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.4 Interpretation and Identification",
+    "text": "4.4 Interpretation and Identification\nThis project is primarily descriptive and inferential rather than fully causal. While the regression models control for several important socioeconomic and regional factors, unobserved differences across locations may still influence the results. Therefore, the findings should be interpreted as evidence of association rather than definitive causal effects."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#descriptive-findings",
+    "href": "danl-research-template-tp_copy.html#descriptive-findings",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.1 Descriptive Findings",
+    "text": "5.1 Descriptive Findings\nRaw average PM2.5 levels by distance band do not show substantially higher pollution levels near data centers. In some cases, locations within one mile even display slightly lower average PM2.5 levels than more distant areas.\nHowever, these raw comparisons do not account for regional and socioeconomic differences."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#regression-results",
+    "href": "danl-research-template-tp_copy.html#regression-results",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.2 Regression Results",
+    "text": "5.2 Regression Results\nThe regression analysis reveals a localized relationship between proximity to data centers and PM2.5.\nAreas located within one mile of a data center exhibit higher PM2.5 levels relative to areas more than three miles away, after controlling for income, housing characteristics, population, industrial activity, and metro-level differences.\nThe effect is positive and marginally statistically significant, while the 1–3 mile category does not exhibit a meaningful relationship. This pattern suggests that any environmental association is concentrated very close to data center locations rather than spread across broader metropolitan regions.\nThe positive coefficient on median income likely reflects broader urban density effects. Higher-income observations in this dataset are often concentrated in dense urban areas such as New York City, which tend to have higher baseline pollution levels.\nThe inclusion of industrial activity controls helps address concerns that the estimated data center relationship simply reflects broader industrial land-use patterns."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#continuous-distance-results",
+    "href": "danl-research-template-tp_copy.html#continuous-distance-results",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.3 Continuous Distance Results",
+    "text": "5.3 Continuous Distance Results\nThe continuous distance specification produces weaker results overall but maintains a negative relationship between distance and PM2.5. In other words, PM2.5 tends to decline as distance from data centers increases, although the relationship is not strongly statistically significant."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#machine-learning-results",
+    "href": "danl-research-template-tp_copy.html#machine-learning-results",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.4 Machine Learning Results",
+    "text": "5.4 Machine Learning Results\nThe random forest model does not identify distance as a dominant global predictor of PM2.5. Instead, broader socioeconomic and urban variables appear more important in explaining overall variation.\nThis finding is consistent with the regression analysis. The relationship between data center proximity and PM2.5 appears localized rather than broad enough to dominate predictive performance across all observations."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#robustness-and-interpretation",
+    "href": "danl-research-template-tp_copy.html#robustness-and-interpretation",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.5 Robustness and Interpretation",
+    "text": "5.5 Robustness and Interpretation\nThe consistency between the regression and machine learning results strengthens the broader interpretation of the project. Both approaches suggest that any relationship between data centers and PM2.5 is spatially concentrated rather than widespread."
+  },
+  {
+    "objectID": "danl-research-template-tp_copy.html#additional-future-extensions",
+    "href": "danl-research-template-tp_copy.html#additional-future-extensions",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "9.1 Additional Future Extensions",
+    "text": "9.1 Additional Future Extensions\nPotential future extensions include:\n\nPre/post analysis using facility opening years\nAdditional machine learning models such as XGBoost\nNoise exposure analysis\nEnergy consumption and electricity infrastructure analysis\nMore detailed facility-level emissions data\nResident perception or community survey analysis"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html",
+    "href": "notes/danl-ggplot.html",
+    "title": "ggplot2 Basics",
+    "section": "",
+    "text": "This document introduces the ggplot2 workflow for building clear and professional visualizations in R.\nYou will learn how to:\n\ncreate scatterplots, line plots, and bar charts\nmap variables to aesthetics (aes())\ncontrol color, size, transparency, and labels\nuse facet_wrap() to compare groups\npolish plots with themes and annotations"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#install-one-time",
+    "href": "notes/danl-ggplot.html#install-one-time",
+    "title": "ggplot2 Basics",
+    "section": "2.1 Install (one-time)",
+    "text": "2.1 Install (one-time)\n\n\nShow the code\n# install.packages(\"tidyverse\")"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#load-packages",
+    "href": "notes/danl-ggplot.html#load-packages",
+    "title": "ggplot2 Basics",
+    "section": "2.2 Load packages",
+    "text": "2.2 Load packages\n\n\nShow the code\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#basic-scatterplot",
+    "href": "notes/danl-ggplot.html#basic-scatterplot",
+    "title": "ggplot2 Basics",
+    "section": "5.1 Basic scatterplot",
+    "text": "5.1 Basic scatterplot\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point()"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#add-transparency",
+    "href": "notes/danl-ggplot.html#add-transparency",
+    "title": "ggplot2 Basics",
+    "section": "5.2 Add transparency",
+    "text": "5.2 Add transparency\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(alpha = 0.5)"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#map-color-to-a-categorical-variable",
+    "href": "notes/danl-ggplot.html#map-color-to-a-categorical-variable",
+    "title": "ggplot2 Basics",
+    "section": "5.3 Map color to a categorical variable",
+    "text": "5.3 Map color to a categorical variable\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point(alpha = 0.7)"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#map-size-to-a-numeric-variable",
+    "href": "notes/danl-ggplot.html#map-size-to-a-numeric-variable",
+    "title": "ggplot2 Basics",
+    "section": "5.4 Map size to a numeric variable",
+    "text": "5.4 Map size to a numeric variable\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy, size = cyl)) +\n  geom_point(alpha = 0.6)\n\n\n\n\n\n\n\n\n\n✅ Rule of thumb:\n- color = ... inside aes() means it changes by data values\n- color = \"blue\" outside aes() means fixed color"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#add-a-smooth-trend",
+    "href": "notes/danl-ggplot.html#add-a-smooth-trend",
+    "title": "ggplot2 Basics",
+    "section": "6.1 Add a smooth trend",
+    "text": "6.1 Add a smooth trend\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(alpha = 0.6) +\n  geom_smooth()"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#linear-regression-line",
+    "href": "notes/danl-ggplot.html#linear-regression-line",
+    "title": "ggplot2 Basics",
+    "section": "6.2 Linear regression line",
+    "text": "6.2 Linear regression line\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(alpha = 0.6) +\n  geom_smooth(method = \"lm\", se = FALSE)"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#count-bar-chart",
+    "href": "notes/danl-ggplot.html#count-bar-chart",
+    "title": "ggplot2 Basics",
+    "section": "8.1 Count bar chart",
+    "text": "8.1 Count bar chart\n\n\nShow the code\nggplot(mpg, aes(x = class)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#flip-coordinates-nice-for-long-labels",
+    "href": "notes/danl-ggplot.html#flip-coordinates-nice-for-long-labels",
+    "title": "ggplot2 Basics",
+    "section": "8.2 Flip coordinates (nice for long labels)",
+    "text": "8.2 Flip coordinates (nice for long labels)\n\n\nShow the code\nggplot(mpg, aes(x = class)) +\n  geom_bar() +\n  coord_flip()"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#bar-chart-with-fill-color",
+    "href": "notes/danl-ggplot.html#bar-chart-with-fill-color",
+    "title": "ggplot2 Basics",
+    "section": "8.3 Bar chart with fill color",
+    "text": "8.3 Bar chart with fill color\n\n\nShow the code\nggplot(mpg, aes(x = class, fill = drv)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#step-1-summarize-with-dplyr",
+    "href": "notes/danl-ggplot.html#step-1-summarize-with-dplyr",
+    "title": "ggplot2 Basics",
+    "section": "9.1 Step 1: Summarize with dplyr",
+    "text": "9.1 Step 1: Summarize with dplyr\n\n\nShow the code\nmpg_mean &lt;- mpg |&gt;\n  group_by(class) |&gt;\n  summarise(mean_hwy = mean(hwy), .groups = \"drop\")\n\nmpg_mean\n\n\n# A tibble: 7 × 2\n  class      mean_hwy\n  &lt;chr&gt;         &lt;dbl&gt;\n1 2seater        24.8\n2 compact        28.3\n3 midsize        27.3\n4 minivan        22.4\n5 pickup         16.9\n6 subcompact     28.1\n7 suv            18.1"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#step-2-plot-the-summarized-data",
+    "href": "notes/danl-ggplot.html#step-2-plot-the-summarized-data",
+    "title": "ggplot2 Basics",
+    "section": "9.2 Step 2: Plot the summarized data",
+    "text": "9.2 Step 2: Plot the summarized data\n\n\nShow the code\nggplot(mpg_mean, aes(x = class, y = mean_hwy)) +\n  geom_col()\n\n\n\n\n\n\n\n\n\n✅ geom_bar() counts rows automatically.\n✅ geom_col() uses your own y-values."
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#basic-line-plot",
+    "href": "notes/danl-ggplot.html#basic-line-plot",
+    "title": "ggplot2 Basics",
+    "section": "10.1 Basic line plot",
+    "text": "10.1 Basic line plot\n\n\nShow the code\nggplot(sales, aes(x = month, y = revenue)) +\n  geom_line()"
+  },
+  {
+    "objectID": "notes/danl-ggplot.html#line-points",
+    "href": "notes/danl-ggplot.html#line-points",
+    "title": "ggplot2 Basics",
+    "section": "10.2 Line + points",
+    "text": "10.2 Line + points\n\n\nShow the code\nggplot(sales, aes(x = month, y = revenue)) +\n  geom_line() +\n  geom_point()"
+  },
+  {
+    "objectID": "project/danl-proj.html",
+    "href": "project/danl-proj.html",
+    "title": "Data Project",
+    "section": "",
+    "text": "“Tidy datasets are all alike, but every messy dataset is messy in its own way.” — Hadley Wickham\n\nR is a powerful language and environment for statistical computing and graphics. It is widely used among statisticians and data analysts for data analysis and developing statistical software. Here are some basic concepts and elements of R to help you get started:\n\n\n\nVariables in R are used to store data. You can create a variable using the assignment operator &lt;- (option/Alt + -). For example:\n\n\nCode\nmy_variable &lt;- 10\n\n\nThis will store the value 10 in my_variable.\n\n\n\n\n\nR has several basic data types:\n\nNumeric: For decimal values like 2.5.\nInteger: For whole numbers like 2L (the L tells R it is an integer).\nCharacter: For text or string values, e.g., \"Hello\".\nLogical: For boolean values (TRUE or FALSE).\n\n\n\n\n\n\nVectors are a basic data structure in R. They contain elements of the same type. You can create a vector using the c() function:\n\n\nCode\nmy_vector &lt;- c(1, 2, 3, 4, 5)\n\n\n\n\n\n\nData frames are used for storing data tables in R. It is a list of vectors of equal length. For example, to create a simple data frame:\n\n\nCode\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\"), \n  Age = c(25, 30)\n  )\n\n\n\n\n\n\nFunctions are used to carry out specific tasks in R. For example, sum() is a function that adds numbers together:\n\n\nCode\nsum(1, 2, 3) # Returns 6\n\n\n[1] 6\n\n\n\n\n\n\nR has a vast collection of packages for various statistical tasks. You can install a package using install.packages(\"packageName\") and load it using library(packageName).\n\n\nCode\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\n\n\n\n\nTo get help on a specific function or topic, use the help() function or the shorthand ?, like ?sum on R Console."
+  },
+  {
+    "objectID": "project/danl-proj.html#variables",
+    "href": "project/danl-proj.html#variables",
+    "title": "Data Project",
+    "section": "",
+    "text": "Variables in R are used to store data. You can create a variable using the assignment operator &lt;- (option/Alt + -). For example:\n\n\nCode\nmy_variable &lt;- 10\n\n\nThis will store the value 10 in my_variable."
+  },
+  {
+    "objectID": "project/danl-proj.html#data-types",
+    "href": "project/danl-proj.html#data-types",
+    "title": "Data Project",
+    "section": "",
+    "text": "R has several basic data types:\n\nNumeric: For decimal values like 2.5.\nInteger: For whole numbers like 2L (the L tells R it is an integer).\nCharacter: For text or string values, e.g., \"Hello\".\nLogical: For boolean values (TRUE or FALSE)."
+  },
+  {
+    "objectID": "project/danl-proj.html#vectors",
+    "href": "project/danl-proj.html#vectors",
+    "title": "Data Project",
+    "section": "",
+    "text": "Vectors are a basic data structure in R. They contain elements of the same type. You can create a vector using the c() function:\n\n\nCode\nmy_vector &lt;- c(1, 2, 3, 4, 5)"
+  },
+  {
+    "objectID": "project/danl-proj.html#data-frames",
+    "href": "project/danl-proj.html#data-frames",
+    "title": "Data Project",
+    "section": "",
+    "text": "Data frames are used for storing data tables in R. It is a list of vectors of equal length. For example, to create a simple data frame:\n\n\nCode\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\"), \n  Age = c(25, 30)\n  )"
+  },
+  {
+    "objectID": "project/danl-proj.html#functions",
+    "href": "project/danl-proj.html#functions",
+    "title": "Data Project",
+    "section": "",
+    "text": "Functions are used to carry out specific tasks in R. For example, sum() is a function that adds numbers together:\n\n\nCode\nsum(1, 2, 3) # Returns 6\n\n\n[1] 6"
+  },
+  {
+    "objectID": "project/danl-proj.html#packages",
+    "href": "project/danl-proj.html#packages",
+    "title": "Data Project",
+    "section": "",
+    "text": "R has a vast collection of packages for various statistical tasks. You can install a package using install.packages(\"packageName\") and load it using library(packageName).\n\n\nCode\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "project/danl-proj.html#help-system",
+    "href": "project/danl-proj.html#help-system",
+    "title": "Data Project",
+    "section": "",
+    "text": "To get help on a specific function or topic, use the help() function or the shorthand ?, like ?sum on R Console."
+  },
+  {
+    "objectID": "project/danl-proj.html#key-concepts",
+    "href": "project/danl-proj.html#key-concepts",
+    "title": "Data Project",
+    "section": "2.1 Key Concepts",
+    "text": "2.1 Key Concepts\n\nData: The raw data that you want to plot.\naes() (Aesthetic Mappings): Defines how data are mapped to color, size, shape, and other visual properties.\nGeoms (Geometric Objects): The type of objects that represent data points, like points, lines, bars, etc.\nFacets: For creating small multiples, splitting data into subsets and displaying the same plot for each subset.\nScales: Control how data values are translated to visual properties.\nCoordinate Systems: The plane in which data is plotted, e.g., Cartesian, polar.\nThemes: Control the overall appearance of the plot, like background color, grid lines, and font sizes."
+  },
+  {
+    "objectID": "project/danl-proj.html#examples",
+    "href": "project/danl-proj.html#examples",
+    "title": "Data Project",
+    "section": "2.2 Examples",
+    "text": "2.2 Examples\nLet’s go through some examples to illustrate how ggplot can be used to create different types of visualizations.\n\n2.2.1 Scatter Plot\nCreating a scatter plot to explore the relationship between two variables, say mpg (miles per gallon) and wt (weight of the car) from the mtcars dataset.\n\n\nCode\nggplot(mtcars, aes(x = wt, y = mpg)) + \n  geom_point() +\n  labs(x = \"Weight of Car\", y = \"Miles Per Gallon\",\n       title = \"Scatter plot of MPG vs Car Weight\")\n\n\n\n\n\n\n\n\n\nThis code block creates a scatter plot where car weight is on the x-axis and miles per gallon on the y-axis. Each point represents a car.\n\n\n2.2.2 Bar Chart\nCreating a bar chart to show the count of cars by the number of cylinders.\n\n\nCode\nggplot(mtcars, aes(x = factor(cyl))) + \n  geom_bar() + \n  labs(x = \"Number of Cylinders\", y = \"Count\",\n       title = \"Count of Cars by Cylinders\")\n\n\n\n\n\n\n\n\n\nThis plots a bar chart where each bar represents the count of cars with a certain number of cylinders.\n\n\n2.2.3 Line Graph\nPlotting a line graph, assuming we have a time series data.frame economics that is part of ggplot2 package.\n\n\nCode\nggplot(economics, aes(x = date, y = unemploy)) + \n  geom_line() +\n  labs(x = \"Year\", y = \"Number of Unemployed Persons\",\n       title = \"Unemployment over Time\") \n\n\n\n\n\n\n\n\n\nThis code plots the unemployment numbers over time, with time on the x-axis and the number of unemployed persons on the y-axis.\n\n\n2.2.4 Faceted Plot\nCreating a faceted plot to compare scatter plots of mpg vs wt across different numbers of cylinders.\n\n\nCode\nggplot(mtcars, aes(x = wt, y = mpg)) + \n  geom_point() +\n  facet_wrap(~cyl) +\n  labs(title = \"MPG vs Weight by Number of Cylinders\")\n\n\n\n\n\n\n\n\n\nThis splits the data into subsets based on the number of cylinders and creates a scatter plot for each subset."
+  },
+  {
+    "objectID": "project/danl-proj.html#conclusion",
+    "href": "project/danl-proj.html#conclusion",
+    "title": "Data Project",
+    "section": "2.3 Conclusion",
+    "text": "2.3 Conclusion\nggplot2 provides a powerful and flexible system for making a wide variety of plots. By understanding the grammar of graphics upon which it is based, you can build up complex visualizations from simple components, allowing for a deep and intuitive exploration of data."
+  },
+  {
+    "objectID": "danl-research-template.html",
+    "href": "danl-research-template.html",
+    "title": "Data Analytics Capstone Title",
+    "section": "",
+    "text": "Describe the real-world motivation for your project. Clearly state your research question and explain why it matters.\nBriefly preview your data, empirical approach, main findings, and contribution."
+  },
+  {
+    "objectID": "danl-research-template.html#data-source",
+    "href": "danl-research-template.html#data-source",
+    "title": "Data Analytics Capstone Title",
+    "section": "3.1 Data Source",
+    "text": "3.1 Data Source\nDescribe the data source clearly. Include the source name, link, and access date in the References section."
+  },
+  {
+    "objectID": "danl-research-template.html#unit-of-observation",
+    "href": "danl-research-template.html#unit-of-observation",
+    "title": "Data Analytics Capstone Title",
+    "section": "3.2 Unit of Observation",
+    "text": "3.2 Unit of Observation\nExplain what each row in your dataset represents."
+  },
+  {
+    "objectID": "danl-research-template.html#key-variables",
+    "href": "danl-research-template.html#key-variables",
+    "title": "Data Analytics Capstone Title",
+    "section": "3.3 Key Variables",
+    "text": "3.3 Key Variables\nDescribe your outcome variable, main explanatory variables, and important control variables."
+  },
+  {
+    "objectID": "danl-research-template.html#data-cleaning",
+    "href": "danl-research-template.html#data-cleaning",
+    "title": "Data Analytics Capstone Title",
+    "section": "3.4 Data Cleaning",
+    "text": "3.4 Data Cleaning\nExplain major cleaning steps, sample restrictions, missing values, and variable construction."
+  },
+  {
+    "objectID": "danl-research-template.html#summary-statistics",
+    "href": "danl-research-template.html#summary-statistics",
+    "title": "Data Analytics Capstone Title",
+    "section": "3.5 Summary Statistics",
+    "text": "3.5 Summary Statistics\n\n\nCode\n# Replace this example with your own data and summary statistics.\n# skim(your_data)"
+  },
+  {
+    "objectID": "posts/starwars/starwars_df.html",
+    "href": "posts/starwars/starwars_df.html",
+    "title": "Starwars",
+    "section": "",
+    "text": "Let’s analyze the starwars data:\nstarwars &lt;- read_csv(\"https://bcdanl.github.io/data/starwars.csv\")"
+  },
+  {
+    "objectID": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
+    "href": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
+    "title": "Starwars",
+    "section": "Variable Description for starwars data.frame",
+    "text": "Variable Description for starwars data.frame\nThe following describes the variables in the starwars data.frame.\n\nfilms List of films the character appeared in\nname Name of the character\nspecies Name of species\nheight Height (cm)\nmass Weight (kg)\nhair_color, skin_color, eye_color Hair, skin, and eye colors\nbirth_year Year born (BBY = Before Battle of Yavin)\nsex The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids).\ngender The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids).\nhomeworld Name of homeworld"
+  },
+  {
+    "objectID": "posts/starwars/starwars_df.html#human-vs.-droid",
+    "href": "posts/starwars/starwars_df.html#human-vs.-droid",
+    "title": "Starwars",
+    "section": "Human vs. Droid",
+    "text": "Human vs. Droid\n\nggplot(data = \n         starwars %&gt;% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE) +\n  scale_fill_viridis_d(option = \"C\")"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code with no space in the folder name.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/icecream/icecream.html",
+    "href": "posts/icecream/icecream.html",
+    "title": "Analysis of Ben & Jerry’s Ice Cream Data",
+    "section": "",
+    "text": "Let’s analyze the starwars data:\nice_cream &lt;- read_csv(\"https://bcdanl.github.io/data/ben-and-jerry-cleaned.csv\")"
+  },
+  {
+    "objectID": "posts/icecream/icecream.html#variable-description-for-ice_cream-data.frame",
+    "href": "posts/icecream/icecream.html#variable-description-for-ice_cream-data.frame",
+    "title": "Analysis of Ben & Jerry’s Ice Cream Data",
+    "section": "Variable Description for ice_cream data.frame",
+    "text": "Variable Description for ice_cream data.frame\nThe following describes the variables in the ice_cream data.frame.\n…\n\nice_cream |&gt; \n  skim()\n\n\nData summary\n\n\nName\nice_cream\n\n\nNumber of rows\n21974\n\n\nNumber of columns\n17\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n4\n\n\nlogical\n8\n\n\nnumeric\n5\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nflavor_descr\n0\n1\n3\n30\n0\n50\n0\n\n\nsize1_descr\n0\n1\n9\n9\n0\n2\n0\n\n\nregion\n0\n1\n4\n7\n0\n4\n0\n\n\nrace\n0\n1\n5\n5\n0\n4\n0\n\n\n\nVariable type: logical\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\ncount\n\n\n\n\nusecoup\n0\n1\n0.11\nFAL: 19629, TRU: 2345\n\n\nmarried\n0\n1\n0.60\nTRU: 13276, FAL: 8698\n\n\nhispanic_origin\n0\n1\n0.05\nFAL: 20919, TRU: 1055\n\n\nmicrowave\n0\n1\n0.98\nTRU: 21567, FAL: 407\n\n\ndishwasher\n0\n1\n0.77\nTRU: 16983, FAL: 4991\n\n\nsfh\n0\n1\n0.73\nTRU: 16076, FAL: 5898\n\n\ninternet\n0\n1\n0.84\nTRU: 18529, FAL: 3445\n\n\ntvcable\n34\n1\n0.64\nTRU: 13954, FAL: 7986\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\npriceper1\n0\n1\n3.31\n0.67\n0\n3\n3.34\n3.59\n9.48\n▁▇▂▁▁\n\n\nhousehold_id\n0\n1\n16612005.04\n11685954.46\n2000358\n8142253\n8401573.00\n30183891.00\n30440689.00\n▂▇▁▁▇\n\n\nhousehold_income\n0\n1\n125290.80\n57188.36\n40000\n80000\n110000.00\n170000.00\n310000.00\n▇▃▅▂▁\n\n\nhousehold_size\n0\n1\n2.46\n1.34\n1\n2\n2.00\n3.00\n9.00\n▇▃▁▁▁\n\n\ncouponper1\n0\n1\n0.13\n0.52\n0\n0\n0.00\n0.00\n8.98\n▇▁▁▁▁"
+  },
+  {
+    "objectID": "posts/icecream/icecream.html#flavor-description",
+    "href": "posts/icecream/icecream.html#flavor-description",
+    "title": "Analysis of Ben & Jerry’s Ice Cream Data",
+    "section": "Flavor Description",
+    "text": "Flavor Description\n\nflavor_desc &lt;- ice_cream |&gt; \n  count(flavor_descr) |&gt; \n  arrange(-n)\n\n\nicecream_sub &lt;- ice_cream |&gt; \n  filter(flavor_descr %in% flavor_desc$flavor_descr[1:5])\n\nggplot(icecream_sub,\n       aes(x = priceper1,\n           fill = flavor_descr)) +\n  geom_density(alpha = .25)"
+  },
+  {
+    "objectID": "danl-research-template_copy.html",
+    "href": "danl-research-template_copy.html",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "",
+    "text": "Data centers have become essential infrastructure in the modern economy. As cloud computing, artificial intelligence, streaming services, and digital storage continue to expand, the demand for large-scale computing facilities has increased rapidly across the United States. New York State has experienced significant growth in data center development, particularly in and around major metropolitan areas such as New York City, Buffalo, Rochester, and Albany. While these facilities provide important technological and economic benefits, communities have increasingly raised questions about their potential local environmental and quality-of-life impacts.\nOne of the primary concerns surrounding data centers is their substantial energy demand. Large facilities require continuous electricity to operate servers and cooling systems, and many also rely on backup diesel generators for reliability during outages or peak demand periods. Critics argue that these facilities may contribute to localized pollution, increased strain on energy infrastructure, noise exposure, and other environmental burdens. Supporters, however, argue that modern data centers are generally cleaner than traditional industrial facilities and that many environmental concerns may be overstated.\nThis project examines whether areas located near data centers in New York State are associated with higher levels of PM2.5, a widely used measure of fine particulate air pollution. PM2.5 is an important environmental and public health indicator because exposure to elevated levels has been linked to respiratory and cardiovascular health risks. The central research question of this project is:\nAre areas near data centers associated with higher PM2.5 levels?\nTo answer this question, I combine EPA air quality monitoring data, Census tract socioeconomic data, and geocoded data center locations throughout New York State. The analysis focuses on four metropolitan regions: New York City, Buffalo, Rochester, and Albany. I compare monitoring locations based on their proximity to the nearest data center while controlling for income, housing characteristics, population, industrial activity, and metro-level differences.\nThe empirical strategy primarily relies on regression analysis and geospatial distance measures. In addition, I incorporate a machine learning component using random forest models to explore whether more flexible predictive approaches identify similar patterns. The project is primarily descriptive and inferential rather than fully causal. While the analysis cannot definitively establish causation, it provides evidence regarding whether localized environmental differences are associated with proximity to data centers.\nThe results suggest that areas within one mile of a data center tend to have higher PM2.5 levels relative to areas located farther away, although the effect appears localized rather than widespread. The relationship becomes visible after controlling for socioeconomic and regional differences, highlighting the importance of accounting for confounding factors when evaluating environmental outcomes.\nThe broader contribution of this project is to provide a localized environmental analysis of data center proximity within New York State. Rather than arguing that data centers are inherently harmful, the goal is to better understand how these facilities may interact with surrounding communities and how policymakers and planners can manage future development responsibly."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#data-sources",
+    "href": "danl-research-template_copy.html#data-sources",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.1 Data Sources",
+    "text": "3.1 Data Sources\nThis project combines three primary datasets:\n\nEPA Air Quality System (AQS) PM2.5 monitoring data\nU.S. Census American Community Survey (ACS) tract-level socioeconomic data\nGeocoded data center location data\n\nThe EPA AQS data provide daily PM2.5 observations for monitoring sites across New York State from 2020 through 2025. These observations are aggregated into yearly averages for each monitoring location.\nSocioeconomic variables are obtained from the American Community Survey 5-year estimates. These variables include median household income, median home value, median rent, total population, and an industrial activity proxy.\nData center locations were collected from publicly available facility lists and geocoded using OpenStreetMap geocoding services. Geographic coordinates were used to calculate the distance from each monitoring location to the nearest data center."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#unit-of-observation",
+    "href": "danl-research-template_copy.html#unit-of-observation",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.2 Unit of Observation",
+    "text": "3.2 Unit of Observation\nThe primary unit of observation is a PM2.5 monitoring site-year observation. Each row in the final dataset represents the yearly average PM2.5 level observed at a monitoring location within a given year."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#geographic-scope",
+    "href": "danl-research-template_copy.html#geographic-scope",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.3 Geographic Scope",
+    "text": "3.3 Geographic Scope\nThe analysis focuses on four New York metropolitan regions:\n\nNew York City\nBuffalo\nRochester\nAlbany\n\nThese metro areas were selected because they contain both PM2.5 monitoring infrastructure and significant concentrations of data center facilities."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#key-variables",
+    "href": "danl-research-template_copy.html#key-variables",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.4 Key Variables",
+    "text": "3.4 Key Variables\n\n3.4.1 Outcome Variable\n\nPM2.5 Mean: Yearly average PM2.5 concentration measured at EPA monitoring sites.\n\n\n\n3.4.2 Main Explanatory Variables\n\nDistance to Nearest Data Center: Continuous distance in miles between a monitoring site and the nearest data center.\nDistance Bands: Categorical indicators representing:\n\nWithin 1 mile\n1–3 miles\nOver 3 miles\n\n\n\n\n3.4.3 Control Variables\n\nMedian household income\nMedian home value\nMedian rent\nTotal population\nIndustrial activity share\nMetro fixed effects\n\nThe industrial activity variable is constructed as the share of employed residents working in construction, manufacturing, transportation, warehousing, and utilities occupations. This variable serves as a proxy for underlying industrial intensity."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#data-cleaning-and-processing",
+    "href": "danl-research-template_copy.html#data-cleaning-and-processing",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.5 Data Cleaning and Processing",
+    "text": "3.5 Data Cleaning and Processing\nThe EPA PM2.5 files were imported and combined across years using R. Key variables such as coordinates, pollutant measurements, and dates were converted into consistent formats. Monitoring observations outside New York State were removed.\nData center addresses were cleaned and geocoded to obtain latitude and longitude coordinates. PM2.5 monitoring locations and Census tracts were converted into spatial objects using the sf package. Distances to the nearest data center were calculated using projected coordinate systems."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#summary-statistics",
+    "href": "danl-research-template_copy.html#summary-statistics",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.6 Summary Statistics",
+    "text": "3.6 Summary Statistics\nAverage PM2.5 levels vary across metro areas. New York City exhibits the highest average PM2.5 levels, while Albany and Rochester show lower average pollution levels.\n\n\n\nMetro\nAverage PM2.5\n\n\n\n\nAlbany\n6.78\n\n\nBuffalo\n7.34\n\n\nNYC\n8.89\n\n\nRochester\n6.89\n\n\n\nThe descriptive statistics indicate substantial regional variation, highlighting the importance of controlling for metro-level differences in the empirical analysis."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#data-limitations",
+    "href": "danl-research-template_copy.html#data-limitations",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "3.7 Data Limitations",
+    "text": "3.7 Data Limitations\nSeveral limitations should be acknowledged. First, data centers are often located in already industrial or urbanized areas, making causal interpretation difficult. Second, precise facility-level opening dates and emissions data are not consistently available. Third, PM2.5 monitors are not evenly distributed geographically, which may introduce spatial coverage limitations."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#regression-analysis",
+    "href": "danl-research-template_copy.html#regression-analysis",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.1 Regression Analysis",
+    "text": "4.1 Regression Analysis\nThe primary empirical approach uses ordinary least squares (OLS) regression to estimate the relationship between PM2.5 and proximity to data centers.\nThe baseline specification is:\n$$ PM2.5_i = _0 + _1 _i + _2 _i\n\n_3 _i + _4 _i\n_5 _i + _6 _i\n_7 _i\n_m + _i $$\n\nWhere:\n\n\\(PM2.5_i\\) is the yearly average PM2.5 level\nDistance variables measure proximity to data centers\n\\(X_i\\) represents socioeconomic control variables\n\\(\\gamma_m\\) represents metro fixed effects\n\\(\\varepsilon_i\\) is the error term\n\nThe reference category for the distance-band analysis is locations more than three miles from a data center.\nMetro fixed effects are included to control for baseline regional differences across NYC, Buffalo, Rochester, and Albany. This allows the analysis to focus on within-metro variation rather than broad statewide differences."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#continuous-distance-model",
+    "href": "danl-research-template_copy.html#continuous-distance-model",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.2 Continuous Distance Model",
+    "text": "4.2 Continuous Distance Model\nA secondary specification replaces the categorical distance bands with a continuous distance variable:\n$$ PM2.5_i = _0 + _1 _i\n\n_2 _i + _3 _i\n_4 _i + _5 _i\n_6 _i\n_m + _i $$\n\nThis specification tests whether PM2.5 changes gradually with distance."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#machine-learning-component",
+    "href": "danl-research-template_copy.html#machine-learning-component",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.3 Machine Learning Component",
+    "text": "4.3 Machine Learning Component\nIn addition to regression analysis, I implement a random forest model to explore predictive relationships between PM2.5 and the explanatory variables.\nThe machine learning objective can be summarized as:\n\\[\n\\hat{PM2.5}_i = f(\\text{Distance}_i, X_i)\n\\]\nThe random forest model uses an 80/20 train-test split. Model performance is evaluated using RMSE and MAE metrics. The machine learning component is primarily exploratory and intended to complement the regression analysis rather than replace it."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#interpretation-and-identification",
+    "href": "danl-research-template_copy.html#interpretation-and-identification",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "4.4 Interpretation and Identification",
+    "text": "4.4 Interpretation and Identification\nThis project is primarily descriptive and inferential rather than fully causal. While the regression models control for several important socioeconomic and regional factors, unobserved differences across locations may still influence the results. Therefore, the findings should be interpreted as evidence of association rather than definitive causal effects."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#descriptive-findings",
+    "href": "danl-research-template_copy.html#descriptive-findings",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.1 Descriptive Findings",
+    "text": "5.1 Descriptive Findings\nRaw average PM2.5 levels by distance band do not show substantially higher pollution levels near data centers. In some cases, locations within one mile even display slightly lower average PM2.5 levels than more distant areas.\nHowever, these raw comparisons do not account for regional and socioeconomic differences."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#regression-results",
+    "href": "danl-research-template_copy.html#regression-results",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.2 Regression Results",
+    "text": "5.2 Regression Results\nThe regression analysis reveals a localized relationship between proximity to data centers and PM2.5.\nAreas located within one mile of a data center exhibit higher PM2.5 levels relative to areas more than three miles away, after controlling for income, housing characteristics, population, industrial activity, and metro-level differences.\nThe effect is positive and marginally statistically significant, while the 1–3 mile category does not exhibit a meaningful relationship. This pattern suggests that any environmental association is concentrated very close to data center locations rather than spread across broader metropolitan regions.\nThe positive coefficient on median income likely reflects broader urban density effects. Higher-income observations in this dataset are often concentrated in dense urban areas such as New York City, which tend to have higher baseline pollution levels.\nThe inclusion of industrial activity controls helps address concerns that the estimated data center relationship simply reflects broader industrial land-use patterns."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#continuous-distance-results",
+    "href": "danl-research-template_copy.html#continuous-distance-results",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.3 Continuous Distance Results",
+    "text": "5.3 Continuous Distance Results\nThe continuous distance specification produces weaker results overall but maintains a negative relationship between distance and PM2.5. In other words, PM2.5 tends to decline as distance from data centers increases, although the relationship is not strongly statistically significant."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#machine-learning-results",
+    "href": "danl-research-template_copy.html#machine-learning-results",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.4 Machine Learning Results",
+    "text": "5.4 Machine Learning Results\nThe random forest model does not identify distance as a dominant global predictor of PM2.5. Instead, broader socioeconomic and urban variables appear more important in explaining overall variation.\nThis finding is consistent with the regression analysis. The relationship between data center proximity and PM2.5 appears localized rather than broad enough to dominate predictive performance across all observations."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#robustness-and-interpretation",
+    "href": "danl-research-template_copy.html#robustness-and-interpretation",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "5.5 Robustness and Interpretation",
+    "text": "5.5 Robustness and Interpretation\nThe consistency between the regression and machine learning results strengthens the broader interpretation of the project. Both approaches suggest that any relationship between data centers and PM2.5 is spatially concentrated rather than widespread."
+  },
+  {
+    "objectID": "danl-research-template_copy.html#additional-future-extensions",
+    "href": "danl-research-template_copy.html#additional-future-extensions",
+    "title": "Living Near the Cloud: Quality of Life Near Data Centers in New York State",
+    "section": "9.1 Additional Future Extensions",
+    "text": "9.1 Additional Future Extensions\nPotential future extensions include:\n\nPre/post analysis using facility opening years\nAdditional machine learning models such as XGBoost\nNoise exposure analysis\nEnergy consumption and electricity infrastructure analysis\nMore detailed facility-level emissions data\nResident perception or community survey analysis"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Theodore Packert",
+    "section": "",
+    "text": "Theodore Packert is a recent graduate from SUNY Geneseo."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Theodore Packert",
+    "section": "Education",
+    "text": "Education\nState University of New York at Geneseo | Geneseo, NY  B.S. in Data Analytics | Aug 2022 - May 2026  Minor in Political Science"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Theodore Packert",
+    "section": "Experience",
+    "text": "Experience"
   },
   {
     "objectID": "notes/danl-dplyr.html",
@@ -182,311 +735,10 @@
     "text": "15.3 anti_join() (find non-matches)\n\n\nShow the code\nstudents |&gt;\n  anti_join(grades, by = \"id\")\n\n\n# A tibble: 1 × 2\n     id name \n  &lt;dbl&gt; &lt;chr&gt;\n1   102 Bella"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Theodore Packert",
+    "objectID": "blog-listing.html",
+    "href": "blog-listing.html",
+    "title": "Data Analytics",
     "section": "",
-    "text": "Theodore Packert is a recent graduate from SUNY Geneseo."
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Theodore Packert",
-    "section": "Education",
-    "text": "Education\nState University of New York at Geneseo | Geneseo, NY  B.S. in Data Analytics | Aug 2022 - May 2026  Minor in Political Science"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "Theodore Packert",
-    "section": "Experience",
-    "text": "Experience"
-  },
-  {
-    "objectID": "posts/starwars/starwars_df.html",
-    "href": "posts/starwars/starwars_df.html",
-    "title": "Starwars",
-    "section": "",
-    "text": "Let’s analyze the starwars data:\nstarwars &lt;- read_csv(\"https://bcdanl.github.io/data/starwars.csv\")"
-  },
-  {
-    "objectID": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
-    "href": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
-    "title": "Starwars",
-    "section": "Variable Description for starwars data.frame",
-    "text": "Variable Description for starwars data.frame\nThe following describes the variables in the starwars data.frame.\n\nfilms List of films the character appeared in\nname Name of the character\nspecies Name of species\nheight Height (cm)\nmass Weight (kg)\nhair_color, skin_color, eye_color Hair, skin, and eye colors\nbirth_year Year born (BBY = Before Battle of Yavin)\nsex The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids).\ngender The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids).\nhomeworld Name of homeworld"
-  },
-  {
-    "objectID": "posts/starwars/starwars_df.html#human-vs.-droid",
-    "href": "posts/starwars/starwars_df.html#human-vs.-droid",
-    "title": "Starwars",
-    "section": "Human vs. Droid",
-    "text": "Human vs. Droid\n\nggplot(data = \n         starwars %&gt;% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE) +\n  scale_fill_viridis_d(option = \"C\")"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code with no space in the folder name.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "posts/icecream/icecream.html",
-    "href": "posts/icecream/icecream.html",
-    "title": "Analysis of Ben & Jerry’s Ice Cream Data",
-    "section": "",
-    "text": "Let’s analyze the starwars data:\nice_cream &lt;- read_csv(\"https://bcdanl.github.io/data/ben-and-jerry-cleaned.csv\")"
-  },
-  {
-    "objectID": "posts/icecream/icecream.html#variable-description-for-ice_cream-data.frame",
-    "href": "posts/icecream/icecream.html#variable-description-for-ice_cream-data.frame",
-    "title": "Analysis of Ben & Jerry’s Ice Cream Data",
-    "section": "Variable Description for ice_cream data.frame",
-    "text": "Variable Description for ice_cream data.frame\nThe following describes the variables in the ice_cream data.frame.\n…\n\nice_cream |&gt; \n  skim()\n\n\nData summary\n\n\nName\nice_cream\n\n\nNumber of rows\n21974\n\n\nNumber of columns\n17\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n4\n\n\nlogical\n8\n\n\nnumeric\n5\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nflavor_descr\n0\n1\n3\n30\n0\n50\n0\n\n\nsize1_descr\n0\n1\n9\n9\n0\n2\n0\n\n\nregion\n0\n1\n4\n7\n0\n4\n0\n\n\nrace\n0\n1\n5\n5\n0\n4\n0\n\n\n\nVariable type: logical\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\ncount\n\n\n\n\nusecoup\n0\n1\n0.11\nFAL: 19629, TRU: 2345\n\n\nmarried\n0\n1\n0.60\nTRU: 13276, FAL: 8698\n\n\nhispanic_origin\n0\n1\n0.05\nFAL: 20919, TRU: 1055\n\n\nmicrowave\n0\n1\n0.98\nTRU: 21567, FAL: 407\n\n\ndishwasher\n0\n1\n0.77\nTRU: 16983, FAL: 4991\n\n\nsfh\n0\n1\n0.73\nTRU: 16076, FAL: 5898\n\n\ninternet\n0\n1\n0.84\nTRU: 18529, FAL: 3445\n\n\ntvcable\n34\n1\n0.64\nTRU: 13954, FAL: 7986\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\npriceper1\n0\n1\n3.31\n0.67\n0\n3\n3.34\n3.59\n9.48\n▁▇▂▁▁\n\n\nhousehold_id\n0\n1\n16612005.04\n11685954.46\n2000358\n8142253\n8401573.00\n30183891.00\n30440689.00\n▂▇▁▁▇\n\n\nhousehold_income\n0\n1\n125290.80\n57188.36\n40000\n80000\n110000.00\n170000.00\n310000.00\n▇▃▅▂▁\n\n\nhousehold_size\n0\n1\n2.46\n1.34\n1\n2\n2.00\n3.00\n9.00\n▇▃▁▁▁\n\n\ncouponper1\n0\n1\n0.13\n0.52\n0\n0\n0.00\n0.00\n8.98\n▇▁▁▁▁"
-  },
-  {
-    "objectID": "posts/icecream/icecream.html#flavor-description",
-    "href": "posts/icecream/icecream.html#flavor-description",
-    "title": "Analysis of Ben & Jerry’s Ice Cream Data",
-    "section": "Flavor Description",
-    "text": "Flavor Description\n\nflavor_desc &lt;- ice_cream |&gt; \n  count(flavor_descr) |&gt; \n  arrange(-n)\n\n\nicecream_sub &lt;- ice_cream |&gt; \n  filter(flavor_descr %in% flavor_desc$flavor_descr[1:5])\n\nggplot(icecream_sub,\n       aes(x = priceper1,\n           fill = flavor_descr)) +\n  geom_density(alpha = .25)"
-  },
-  {
-    "objectID": "danl-research-template.html",
-    "href": "danl-research-template.html",
-    "title": "Data Analytics Capstone Title",
-    "section": "",
-    "text": "Describe the real-world motivation for your project. Clearly state your research question and explain why it matters.\nBriefly preview your data, empirical approach, main findings, and contribution."
-  },
-  {
-    "objectID": "danl-research-template.html#data-source",
-    "href": "danl-research-template.html#data-source",
-    "title": "Data Analytics Capstone Title",
-    "section": "3.1 Data Source",
-    "text": "3.1 Data Source\nDescribe the data source clearly. Include the source name, link, and access date in the References section."
-  },
-  {
-    "objectID": "danl-research-template.html#unit-of-observation",
-    "href": "danl-research-template.html#unit-of-observation",
-    "title": "Data Analytics Capstone Title",
-    "section": "3.2 Unit of Observation",
-    "text": "3.2 Unit of Observation\nExplain what each row in your dataset represents."
-  },
-  {
-    "objectID": "danl-research-template.html#key-variables",
-    "href": "danl-research-template.html#key-variables",
-    "title": "Data Analytics Capstone Title",
-    "section": "3.3 Key Variables",
-    "text": "3.3 Key Variables\nDescribe your outcome variable, main explanatory variables, and important control variables."
-  },
-  {
-    "objectID": "danl-research-template.html#data-cleaning",
-    "href": "danl-research-template.html#data-cleaning",
-    "title": "Data Analytics Capstone Title",
-    "section": "3.4 Data Cleaning",
-    "text": "3.4 Data Cleaning\nExplain major cleaning steps, sample restrictions, missing values, and variable construction."
-  },
-  {
-    "objectID": "danl-research-template.html#summary-statistics",
-    "href": "danl-research-template.html#summary-statistics",
-    "title": "Data Analytics Capstone Title",
-    "section": "3.5 Summary Statistics",
-    "text": "3.5 Summary Statistics\n\n\nCode\n# Replace this example with your own data and summary statistics.\n# skim(your_data)"
-  },
-  {
-    "objectID": "project/danl-proj.html",
-    "href": "project/danl-proj.html",
-    "title": "Data Project",
-    "section": "",
-    "text": "“Tidy datasets are all alike, but every messy dataset is messy in its own way.” — Hadley Wickham\n\nR is a powerful language and environment for statistical computing and graphics. It is widely used among statisticians and data analysts for data analysis and developing statistical software. Here are some basic concepts and elements of R to help you get started:\n\n\n\nVariables in R are used to store data. You can create a variable using the assignment operator &lt;- (option/Alt + -). For example:\n\n\nCode\nmy_variable &lt;- 10\n\n\nThis will store the value 10 in my_variable.\n\n\n\n\n\nR has several basic data types:\n\nNumeric: For decimal values like 2.5.\nInteger: For whole numbers like 2L (the L tells R it is an integer).\nCharacter: For text or string values, e.g., \"Hello\".\nLogical: For boolean values (TRUE or FALSE).\n\n\n\n\n\n\nVectors are a basic data structure in R. They contain elements of the same type. You can create a vector using the c() function:\n\n\nCode\nmy_vector &lt;- c(1, 2, 3, 4, 5)\n\n\n\n\n\n\nData frames are used for storing data tables in R. It is a list of vectors of equal length. For example, to create a simple data frame:\n\n\nCode\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\"), \n  Age = c(25, 30)\n  )\n\n\n\n\n\n\nFunctions are used to carry out specific tasks in R. For example, sum() is a function that adds numbers together:\n\n\nCode\nsum(1, 2, 3) # Returns 6\n\n\n[1] 6\n\n\n\n\n\n\nR has a vast collection of packages for various statistical tasks. You can install a package using install.packages(\"packageName\") and load it using library(packageName).\n\n\nCode\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\n\n\n\n\nTo get help on a specific function or topic, use the help() function or the shorthand ?, like ?sum on R Console."
-  },
-  {
-    "objectID": "project/danl-proj.html#variables",
-    "href": "project/danl-proj.html#variables",
-    "title": "Data Project",
-    "section": "",
-    "text": "Variables in R are used to store data. You can create a variable using the assignment operator &lt;- (option/Alt + -). For example:\n\n\nCode\nmy_variable &lt;- 10\n\n\nThis will store the value 10 in my_variable."
-  },
-  {
-    "objectID": "project/danl-proj.html#data-types",
-    "href": "project/danl-proj.html#data-types",
-    "title": "Data Project",
-    "section": "",
-    "text": "R has several basic data types:\n\nNumeric: For decimal values like 2.5.\nInteger: For whole numbers like 2L (the L tells R it is an integer).\nCharacter: For text or string values, e.g., \"Hello\".\nLogical: For boolean values (TRUE or FALSE)."
-  },
-  {
-    "objectID": "project/danl-proj.html#vectors",
-    "href": "project/danl-proj.html#vectors",
-    "title": "Data Project",
-    "section": "",
-    "text": "Vectors are a basic data structure in R. They contain elements of the same type. You can create a vector using the c() function:\n\n\nCode\nmy_vector &lt;- c(1, 2, 3, 4, 5)"
-  },
-  {
-    "objectID": "project/danl-proj.html#data-frames",
-    "href": "project/danl-proj.html#data-frames",
-    "title": "Data Project",
-    "section": "",
-    "text": "Data frames are used for storing data tables in R. It is a list of vectors of equal length. For example, to create a simple data frame:\n\n\nCode\ndf &lt;- data.frame(\n  Name = c(\"Alice\", \"Bob\"), \n  Age = c(25, 30)\n  )"
-  },
-  {
-    "objectID": "project/danl-proj.html#functions",
-    "href": "project/danl-proj.html#functions",
-    "title": "Data Project",
-    "section": "",
-    "text": "Functions are used to carry out specific tasks in R. For example, sum() is a function that adds numbers together:\n\n\nCode\nsum(1, 2, 3) # Returns 6\n\n\n[1] 6"
-  },
-  {
-    "objectID": "project/danl-proj.html#packages",
-    "href": "project/danl-proj.html#packages",
-    "title": "Data Project",
-    "section": "",
-    "text": "R has a vast collection of packages for various statistical tasks. You can install a package using install.packages(\"packageName\") and load it using library(packageName).\n\n\nCode\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)"
-  },
-  {
-    "objectID": "project/danl-proj.html#help-system",
-    "href": "project/danl-proj.html#help-system",
-    "title": "Data Project",
-    "section": "",
-    "text": "To get help on a specific function or topic, use the help() function or the shorthand ?, like ?sum on R Console."
-  },
-  {
-    "objectID": "project/danl-proj.html#key-concepts",
-    "href": "project/danl-proj.html#key-concepts",
-    "title": "Data Project",
-    "section": "2.1 Key Concepts",
-    "text": "2.1 Key Concepts\n\nData: The raw data that you want to plot.\naes() (Aesthetic Mappings): Defines how data are mapped to color, size, shape, and other visual properties.\nGeoms (Geometric Objects): The type of objects that represent data points, like points, lines, bars, etc.\nFacets: For creating small multiples, splitting data into subsets and displaying the same plot for each subset.\nScales: Control how data values are translated to visual properties.\nCoordinate Systems: The plane in which data is plotted, e.g., Cartesian, polar.\nThemes: Control the overall appearance of the plot, like background color, grid lines, and font sizes."
-  },
-  {
-    "objectID": "project/danl-proj.html#examples",
-    "href": "project/danl-proj.html#examples",
-    "title": "Data Project",
-    "section": "2.2 Examples",
-    "text": "2.2 Examples\nLet’s go through some examples to illustrate how ggplot can be used to create different types of visualizations.\n\n2.2.1 Scatter Plot\nCreating a scatter plot to explore the relationship between two variables, say mpg (miles per gallon) and wt (weight of the car) from the mtcars dataset.\n\n\nCode\nggplot(mtcars, aes(x = wt, y = mpg)) + \n  geom_point() +\n  labs(x = \"Weight of Car\", y = \"Miles Per Gallon\",\n       title = \"Scatter plot of MPG vs Car Weight\")\n\n\n\n\n\n\n\n\n\nThis code block creates a scatter plot where car weight is on the x-axis and miles per gallon on the y-axis. Each point represents a car.\n\n\n2.2.2 Bar Chart\nCreating a bar chart to show the count of cars by the number of cylinders.\n\n\nCode\nggplot(mtcars, aes(x = factor(cyl))) + \n  geom_bar() + \n  labs(x = \"Number of Cylinders\", y = \"Count\",\n       title = \"Count of Cars by Cylinders\")\n\n\n\n\n\n\n\n\n\nThis plots a bar chart where each bar represents the count of cars with a certain number of cylinders.\n\n\n2.2.3 Line Graph\nPlotting a line graph, assuming we have a time series data.frame economics that is part of ggplot2 package.\n\n\nCode\nggplot(economics, aes(x = date, y = unemploy)) + \n  geom_line() +\n  labs(x = \"Year\", y = \"Number of Unemployed Persons\",\n       title = \"Unemployment over Time\") \n\n\n\n\n\n\n\n\n\nThis code plots the unemployment numbers over time, with time on the x-axis and the number of unemployed persons on the y-axis.\n\n\n2.2.4 Faceted Plot\nCreating a faceted plot to compare scatter plots of mpg vs wt across different numbers of cylinders.\n\n\nCode\nggplot(mtcars, aes(x = wt, y = mpg)) + \n  geom_point() +\n  facet_wrap(~cyl) +\n  labs(title = \"MPG vs Weight by Number of Cylinders\")\n\n\n\n\n\n\n\n\n\nThis splits the data into subsets based on the number of cylinders and creates a scatter plot for each subset."
-  },
-  {
-    "objectID": "project/danl-proj.html#conclusion",
-    "href": "project/danl-proj.html#conclusion",
-    "title": "Data Project",
-    "section": "2.3 Conclusion",
-    "text": "2.3 Conclusion\nggplot2 provides a powerful and flexible system for making a wide variety of plots. By understanding the grammar of graphics upon which it is based, you can build up complex visualizations from simple components, allowing for a deep and intuitive exploration of data."
-  },
-  {
-    "objectID": "notes/danl-ggplot.html",
-    "href": "notes/danl-ggplot.html",
-    "title": "ggplot2 Basics",
-    "section": "",
-    "text": "This document introduces the ggplot2 workflow for building clear and professional visualizations in R.\nYou will learn how to:\n\ncreate scatterplots, line plots, and bar charts\nmap variables to aesthetics (aes())\ncontrol color, size, transparency, and labels\nuse facet_wrap() to compare groups\npolish plots with themes and annotations"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#install-one-time",
-    "href": "notes/danl-ggplot.html#install-one-time",
-    "title": "ggplot2 Basics",
-    "section": "2.1 Install (one-time)",
-    "text": "2.1 Install (one-time)\n\n\nShow the code\n# install.packages(\"tidyverse\")"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#load-packages",
-    "href": "notes/danl-ggplot.html#load-packages",
-    "title": "ggplot2 Basics",
-    "section": "2.2 Load packages",
-    "text": "2.2 Load packages\n\n\nShow the code\nlibrary(tidyverse)"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#basic-scatterplot",
-    "href": "notes/danl-ggplot.html#basic-scatterplot",
-    "title": "ggplot2 Basics",
-    "section": "5.1 Basic scatterplot",
-    "text": "5.1 Basic scatterplot\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point()"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#add-transparency",
-    "href": "notes/danl-ggplot.html#add-transparency",
-    "title": "ggplot2 Basics",
-    "section": "5.2 Add transparency",
-    "text": "5.2 Add transparency\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(alpha = 0.5)"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#map-color-to-a-categorical-variable",
-    "href": "notes/danl-ggplot.html#map-color-to-a-categorical-variable",
-    "title": "ggplot2 Basics",
-    "section": "5.3 Map color to a categorical variable",
-    "text": "5.3 Map color to a categorical variable\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point(alpha = 0.7)"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#map-size-to-a-numeric-variable",
-    "href": "notes/danl-ggplot.html#map-size-to-a-numeric-variable",
-    "title": "ggplot2 Basics",
-    "section": "5.4 Map size to a numeric variable",
-    "text": "5.4 Map size to a numeric variable\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy, size = cyl)) +\n  geom_point(alpha = 0.6)\n\n\n\n\n\n\n\n\n\n✅ Rule of thumb:\n- color = ... inside aes() means it changes by data values\n- color = \"blue\" outside aes() means fixed color"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#add-a-smooth-trend",
-    "href": "notes/danl-ggplot.html#add-a-smooth-trend",
-    "title": "ggplot2 Basics",
-    "section": "6.1 Add a smooth trend",
-    "text": "6.1 Add a smooth trend\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(alpha = 0.6) +\n  geom_smooth()"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#linear-regression-line",
-    "href": "notes/danl-ggplot.html#linear-regression-line",
-    "title": "ggplot2 Basics",
-    "section": "6.2 Linear regression line",
-    "text": "6.2 Linear regression line\n\n\nShow the code\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(alpha = 0.6) +\n  geom_smooth(method = \"lm\", se = FALSE)"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#count-bar-chart",
-    "href": "notes/danl-ggplot.html#count-bar-chart",
-    "title": "ggplot2 Basics",
-    "section": "8.1 Count bar chart",
-    "text": "8.1 Count bar chart\n\n\nShow the code\nggplot(mpg, aes(x = class)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#flip-coordinates-nice-for-long-labels",
-    "href": "notes/danl-ggplot.html#flip-coordinates-nice-for-long-labels",
-    "title": "ggplot2 Basics",
-    "section": "8.2 Flip coordinates (nice for long labels)",
-    "text": "8.2 Flip coordinates (nice for long labels)\n\n\nShow the code\nggplot(mpg, aes(x = class)) +\n  geom_bar() +\n  coord_flip()"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#bar-chart-with-fill-color",
-    "href": "notes/danl-ggplot.html#bar-chart-with-fill-color",
-    "title": "ggplot2 Basics",
-    "section": "8.3 Bar chart with fill color",
-    "text": "8.3 Bar chart with fill color\n\n\nShow the code\nggplot(mpg, aes(x = class, fill = drv)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#step-1-summarize-with-dplyr",
-    "href": "notes/danl-ggplot.html#step-1-summarize-with-dplyr",
-    "title": "ggplot2 Basics",
-    "section": "9.1 Step 1: Summarize with dplyr",
-    "text": "9.1 Step 1: Summarize with dplyr\n\n\nShow the code\nmpg_mean &lt;- mpg |&gt;\n  group_by(class) |&gt;\n  summarise(mean_hwy = mean(hwy), .groups = \"drop\")\n\nmpg_mean\n\n\n# A tibble: 7 × 2\n  class      mean_hwy\n  &lt;chr&gt;         &lt;dbl&gt;\n1 2seater        24.8\n2 compact        28.3\n3 midsize        27.3\n4 minivan        22.4\n5 pickup         16.9\n6 subcompact     28.1\n7 suv            18.1"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#step-2-plot-the-summarized-data",
-    "href": "notes/danl-ggplot.html#step-2-plot-the-summarized-data",
-    "title": "ggplot2 Basics",
-    "section": "9.2 Step 2: Plot the summarized data",
-    "text": "9.2 Step 2: Plot the summarized data\n\n\nShow the code\nggplot(mpg_mean, aes(x = class, y = mean_hwy)) +\n  geom_col()\n\n\n\n\n\n\n\n\n\n✅ geom_bar() counts rows automatically.\n✅ geom_col() uses your own y-values."
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#basic-line-plot",
-    "href": "notes/danl-ggplot.html#basic-line-plot",
-    "title": "ggplot2 Basics",
-    "section": "10.1 Basic line plot",
-    "text": "10.1 Basic line plot\n\n\nShow the code\nggplot(sales, aes(x = month, y = revenue)) +\n  geom_line()"
-  },
-  {
-    "objectID": "notes/danl-ggplot.html#line-points",
-    "href": "notes/danl-ggplot.html#line-points",
-    "title": "ggplot2 Basics",
-    "section": "10.2 Line + points",
-    "text": "10.2 Line + points\n\n\nShow the code\nggplot(sales, aes(x = month, y = revenue)) +\n  geom_line() +\n  geom_point()"
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nAnalysis of Ben & Jerry’s Ice Cream Data\n\n\n\n\n\nFeb 11, 2026\n\n\nByeong-Hak Choe\n\n2 min\n\n\n\n\n\n\n\n\n\n\n\nStarwars\n\n\n\n\n\nJan 23, 2026\n\n\nYour Name\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\nJan 22, 2026\n\n\nYOUR NAME\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\nJan 21, 2026\n\n\nYOUR NAME\n\n1 min\n\n\n\n\nNo matching items"
   }
 ]
