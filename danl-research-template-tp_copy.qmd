@@ -1,0 +1,285 @@
+---
+title: "Living Near the Cloud: Quality of Life Near Data Centers in New York State"
+author:
+  - name: Theodore Packert 
+    affiliation: SUNY Geneseo
+    
+date: last-modified
+
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  message: false
+  fig-width: 10
+  fig-height: 6
+
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-title: "Contents"
+    toc-expand: 3
+    number-sections: true
+    code-tools: true
+    highlight-style: atom-one
+---
+# Introduction
+
+Data centers have become essential infrastructure in the modern economy. As cloud computing, artificial intelligence, streaming services, and digital storage continue to expand, the demand for large-scale computing facilities has increased rapidly across the United States. New York State has experienced significant growth in data center development, particularly in and around major metropolitan areas such as New York City, Buffalo, Rochester, and Albany. While these facilities provide important technological and economic benefits, communities have increasingly raised questions about their potential local environmental and quality-of-life impacts.
+
+One of the primary concerns surrounding data centers is their substantial energy demand. Large facilities require continuous electricity to operate servers and cooling systems, and many also rely on backup diesel generators for reliability during outages or peak demand periods. Critics argue that these facilities may contribute to localized pollution, increased strain on energy infrastructure, noise exposure, and other environmental burdens. Supporters, however, argue that modern data centers are generally cleaner than traditional industrial facilities and that many environmental concerns may be overstated.
+
+This project examines whether areas located near data centers in New York State are associated with higher levels of PM2.5, a widely used measure of fine particulate air pollution. PM2.5 is an important environmental and public health indicator because exposure to elevated levels has been linked to respiratory and cardiovascular health risks. The central research question of this project is:
+
+**Are areas near data centers associated with higher PM2.5 levels?** 
+
+To answer this question, I combine EPA air quality monitoring data, Census tract socioeconomic data, and geocoded data center locations throughout New York State. The analysis focuses on four metropolitan regions: New York City, Buffalo, Rochester, and Albany. I compare monitoring locations based on their proximity to the nearest data center while controlling for income, housing characteristics, population, industrial activity, and metro-level differences.
+
+The empirical strategy primarily relies on regression analysis and geospatial distance measures. In addition, I incorporate a machine learning component using random forest models to explore whether more flexible predictive approaches identify similar patterns. The project is primarily descriptive and inferential rather than fully causal. While the analysis cannot definitively establish causation, it provides evidence regarding whether localized environmental differences are associated with proximity to data centers.
+
+The results suggest that areas within one mile of a data center tend to have higher PM2.5 levels relative to areas located farther away, although the effect appears localized rather than widespread. The relationship becomes visible after controlling for socioeconomic and regional differences, highlighting the importance of accounting for confounding factors when evaluating environmental outcomes.
+
+The broader contribution of this project is to provide a localized environmental analysis of data center proximity within New York State. Rather than arguing that data centers are inherently harmful, the goal is to better understand how these facilities may interact with surrounding communities and how policymakers and planners can manage future development responsibly.
+
+# Background and Related Literature
+
+Data centers are specialized facilities that store, process, and distribute digital information. The rapid expansion of cloud computing and artificial intelligence has significantly increased the number and scale of these facilities over the last decade. Major technology companies, telecommunications firms, and colocation providers continue to invest heavily in data infrastructure throughout the United States.
+
+The environmental footprint of data centers has become an increasingly important policy issue. Existing research often focuses on the large energy consumption associated with server operations and cooling systems. Data centers can consume substantial amounts of electricity, especially in dense metropolitan regions where demand for digital services is highest. Concerns have also emerged regarding the use of backup diesel generators, which may contribute to localized emissions during testing or emergency operation.
+
+At the same time, many studies note that modern data centers are generally more energy-efficient than older industrial facilities and often invest heavily in renewable energy procurement and cooling efficiency. This creates an important empirical question: are communities located near data centers actually exposed to measurable environmental differences?
+
+PM2.5, or fine particulate matter smaller than 2.5 micrometers in diameter, is commonly used as an air quality indicator in environmental and public health research. Numerous studies have linked higher PM2.5 exposure to respiratory illness, cardiovascular disease, and increased mortality risk. Urban density, traffic congestion, industrial activity, and energy production are all known contributors to PM2.5 levels.
+
+A major challenge in studying data centers is separating their potential effects from the broader characteristics of the areas where they are located. Data centers are often concentrated in dense urban areas or industrial corridors that may already experience higher levels of pollution. This makes it difficult to determine whether any observed environmental differences are attributable to the data centers themselves or to the surrounding urban environment.
+
+This project contributes to the literature by focusing specifically on localized environmental variation near data centers within New York State. Rather than examining national-level averages, the analysis emphasizes within-metro comparisons and geospatial proximity. The project also combines traditional regression analysis with exploratory machine learning methods to evaluate whether distance to data centers consistently contributes to PM2.5 prediction.
+
+# Data
+
+## Data Sources
+
+This project combines three primary datasets:
+
+1. EPA Air Quality System (AQS) PM2.5 monitoring data
+2. U.S. Census American Community Survey (ACS) tract-level socioeconomic data
+3. Geocoded data center location data
+
+The EPA AQS data provide daily PM2.5 observations for monitoring sites across New York State from 2020 through 2025. These observations are aggregated into yearly averages for each monitoring location.
+
+Socioeconomic variables are obtained from the American Community Survey 5-year estimates. These variables include median household income, median home value, median rent, total population, and an industrial activity proxy.
+
+Data center locations were collected from publicly available facility lists and geocoded using OpenStreetMap geocoding services. Geographic coordinates were used to calculate the distance from each monitoring location to the nearest data center.
+
+## Unit of Observation
+
+The primary unit of observation is a PM2.5 monitoring site-year observation. Each row in the final dataset represents the yearly average PM2.5 level observed at a monitoring location within a given year.
+
+## Geographic Scope
+
+The analysis focuses on four New York metropolitan regions:
+
+* New York City
+* Buffalo
+* Rochester
+* Albany
+
+These metro areas were selected because they contain both PM2.5 monitoring infrastructure and significant concentrations of data center facilities.
+
+## Key Variables
+
+### Outcome Variable
+
+* **PM2.5 Mean:** Yearly average PM2.5 concentration measured at EPA monitoring sites.
+
+### Main Explanatory Variables
+
+* **Distance to Nearest Data Center:** Continuous distance in miles between a monitoring site and the nearest data center.
+* **Distance Bands:** Categorical indicators representing:
+
+  * Within 1 mile
+  * 1–3 miles
+  * Over 3 miles
+
+### Control Variables
+
+* Median household income
+* Median home value
+* Median rent
+* Total population
+* Industrial activity share
+* Metro fixed effects
+
+The industrial activity variable is constructed as the share of employed residents working in construction, manufacturing, transportation, warehousing, and utilities occupations. This variable serves as a proxy for underlying industrial intensity.
+
+## Data Cleaning and Processing
+
+The EPA PM2.5 files were imported and combined across years using R. Key variables such as coordinates, pollutant measurements, and dates were converted into consistent formats. Monitoring observations outside New York State were removed.
+
+Data center addresses were cleaned and geocoded to obtain latitude and longitude coordinates. PM2.5 monitoring locations and Census tracts were converted into spatial objects using the `sf` package. Distances to the nearest data center were calculated using projected coordinate systems.
+
+## Summary Statistics
+
+Average PM2.5 levels vary across metro areas. New York City exhibits the highest average PM2.5 levels, while Albany and Rochester show lower average pollution levels.
+
+| Metro     | Average PM2.5 |
+| --------- | ------------- |
+| Albany    | 6.78          |
+| Buffalo   | 7.34          |
+| NYC       | 8.89          |
+| Rochester | 6.89          |
+
+The descriptive statistics indicate substantial regional variation, highlighting the importance of controlling for metro-level differences in the empirical analysis.
+
+## Data Limitations
+
+Several limitations should be acknowledged. First, data centers are often located in already industrial or urbanized areas, making causal interpretation difficult. Second, precise facility-level opening dates and emissions data are not consistently available. Third, PM2.5 monitors are not evenly distributed geographically, which may introduce spatial coverage limitations.
+
+# Empirical Strategy / Methods
+
+## Regression Analysis
+
+The primary empirical approach uses ordinary least squares (OLS) regression to estimate the relationship between PM2.5 and proximity to data centers.
+
+The baseline specification is:
+
+$$
+PM2.5_i = \beta_0 + \beta_1 \text{Within1Mile}_i + \beta_2 \text{OneToThreeMiles}_i
+
+* \beta_3 \text{Income}_i + \beta_4 \text{HomeValue}_i
+* \beta_5 \text{Rent}_i + \beta_6 \text{Population}_i
+* \beta_7 \text{IndustrialActivity}_i
+* \gamma_m + \varepsilon_i
+  $$
+
+Where:
+
+* $PM2.5_i$ is the yearly average PM2.5 level
+* Distance variables measure proximity to data centers
+* $X_i$ represents socioeconomic control variables
+* $\gamma_m$ represents metro fixed effects
+* $\varepsilon_i$ is the error term
+
+The reference category for the distance-band analysis is locations more than three miles from a data center.
+
+Metro fixed effects are included to control for baseline regional differences across NYC, Buffalo, Rochester, and Albany. This allows the analysis to focus on within-metro variation rather than broad statewide differences.
+
+## Continuous Distance Model
+
+A secondary specification replaces the categorical distance bands with a continuous distance variable:
+
+$$
+PM2.5_i = \beta_0 + \beta_1 \text{DistanceMiles}_i
+
+* \beta_2 \text{Income}_i + \beta_3 \text{HomeValue}_i
+* \beta_4 \text{Rent}_i + \beta_5 \text{Population}_i
+* \beta_6 \text{IndustrialActivity}_i
+* \gamma_m + \varepsilon_i
+  $$
+
+This specification tests whether PM2.5 changes gradually with distance.
+
+## Machine Learning Component
+
+In addition to regression analysis, I implement a random forest model to explore predictive relationships between PM2.5 and the explanatory variables.
+
+The machine learning objective can be summarized as:
+
+$$
+\hat{PM2.5}_i = f(\text{Distance}_i, X_i)
+$$
+
+The random forest model uses an 80/20 train-test split. Model performance is evaluated using RMSE and MAE metrics. The machine learning component is primarily exploratory and intended to complement the regression analysis rather than replace it.
+
+## Interpretation and Identification
+
+This project is primarily descriptive and inferential rather than fully causal. While the regression models control for several important socioeconomic and regional factors, unobserved differences across locations may still influence the results. Therefore, the findings should be interpreted as evidence of association rather than definitive causal effects.
+
+# Results
+
+## Descriptive Findings
+
+Raw average PM2.5 levels by distance band do not show substantially higher pollution levels near data centers. In some cases, locations within one mile even display slightly lower average PM2.5 levels than more distant areas.
+
+However, these raw comparisons do not account for regional and socioeconomic differences.
+
+## Regression Results
+
+The regression analysis reveals a localized relationship between proximity to data centers and PM2.5.
+
+Areas located within one mile of a data center exhibit higher PM2.5 levels relative to areas more than three miles away, after controlling for income, housing characteristics, population, industrial activity, and metro-level differences.
+
+The effect is positive and marginally statistically significant, while the 1–3 mile category does not exhibit a meaningful relationship. This pattern suggests that any environmental association is concentrated very close to data center locations rather than spread across broader metropolitan regions.
+
+The positive coefficient on median income likely reflects broader urban density effects. Higher-income observations in this dataset are often concentrated in dense urban areas such as New York City, which tend to have higher baseline pollution levels.
+
+The inclusion of industrial activity controls helps address concerns that the estimated data center relationship simply reflects broader industrial land-use patterns.
+
+## Continuous Distance Results
+
+The continuous distance specification produces weaker results overall but maintains a negative relationship between distance and PM2.5. In other words, PM2.5 tends to decline as distance from data centers increases, although the relationship is not strongly statistically significant.
+
+## Machine Learning Results
+
+The random forest model does not identify distance as a dominant global predictor of PM2.5. Instead, broader socioeconomic and urban variables appear more important in explaining overall variation.
+
+This finding is consistent with the regression analysis. The relationship between data center proximity and PM2.5 appears localized rather than broad enough to dominate predictive performance across all observations.
+
+## Robustness and Interpretation
+
+The consistency between the regression and machine learning results strengthens the broader interpretation of the project. Both approaches suggest that any relationship between data centers and PM2.5 is spatially concentrated rather than widespread.
+
+# Discussion and Implications
+
+The results suggest that data centers may be associated with localized environmental differences, particularly within one mile of facility locations. However, the evidence does not support the idea of broad regional pollution effects extending far beyond nearby areas.
+
+This finding has important implications for urban planning and infrastructure policy. Rather than imposing broad restrictions on data center development, policymakers may benefit more from targeted strategies focused on local monitoring and mitigation.
+
+Potential policy approaches include:
+
+* Increased environmental monitoring near large facilities
+* Improved transparency regarding backup generator usage
+* Localized buffer or setback guidance
+* Greater coordination between energy infrastructure planning and community development
+
+The findings also highlight the importance of considering broader infrastructure effects beyond air quality alone. Data centers consume substantial amounts of electricity, which may create additional pressure on local energy systems and utility pricing over time.
+
+At the same time, the project demonstrates the challenges of isolating the independent environmental effects of data centers. Because these facilities often locate in already urbanized or industrialized areas, causal identification remains difficult.
+
+# Conclusion
+
+This project examined whether proximity to data centers in New York State is associated with higher PM2.5 levels. Using EPA monitoring data, Census tract socioeconomic variables, geospatial distance measures, regression analysis, and machine learning methods, the analysis finds evidence of localized PM2.5 differences near data center facilities.
+
+The results suggest that areas within one mile of a data center tend to exhibit higher PM2.5 levels after controlling for socioeconomic and regional differences. However, the relationship does not appear widespread beyond nearby areas.
+
+More broadly, the project highlights the importance of combining geospatial analysis, statistical controls, and machine learning approaches when evaluating environmental infrastructure questions.
+
+The findings should not be interpreted as evidence that data centers are inherently harmful. Instead, they suggest that careful planning, monitoring, and localized policy strategies may help communities better manage future data center development.
+
+Future work could improve the analysis by incorporating facility-level opening years, emissions data, traffic measures, energy consumption metrics, or stronger causal identification strategies.
+
+# References
+
+Environmental Protection Agency (EPA). Air Quality System (AQS) Data Mart. [https://aqs.epa.gov/aqsweb/airdata/download_files.html](https://aqs.epa.gov/aqsweb/airdata/download_files.html). Accessed May 2026.
+
+United States Census Bureau. American Community Survey (ACS) 5-Year Estimates. [https://www.census.gov/programs-surveys/acs](https://www.census.gov/programs-surveys/acs). Accessed May 2026.
+
+Federal Reserve Economic Data (FRED). Electricity Price Data. [https://fred.stlouisfed.org/](https://fred.stlouisfed.org/). Accessed May 2026.
+
+OpenStreetMap Nominatim Geocoder. [https://nominatim.openstreetmap.org/](https://nominatim.openstreetmap.org/). Accessed May 2026.
+
+# Appendix
+
+## Additional Future Extensions
+
+Potential future extensions include:
+
+* Pre/post analysis using facility opening years
+* Additional machine learning models such as XGBoost
+* Noise exposure analysis
+* Energy consumption and electricity infrastructure analysis
+* More detailed facility-level emissions data
+* Resident perception or community survey analysis
+
+

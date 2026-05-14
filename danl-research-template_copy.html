@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Theodore Packert">
+<meta name="dcterms.date" content="2026-05-14">
+
+<title>Living Near the Cloud: Quality of Life Near Data Centers in New York State – Theodore Packert</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-f428fda71a3abb5b1b9c21151da8fd61.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6ec1ea2183979a90750e7180bf9040de.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-f428fda71a3abb5b1b9c21151da8fd61.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-84a1538d0bd81d2041a013f98eb71656.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-de741be01053ac1dfbcded9db6acaac8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-84a1538d0bd81d2041a013f98eb71656.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Theodore Packert</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./danl-research-template.html" aria-current="page"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-analysis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Analysis</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-analysis">    
+        <li>
+    <a class="dropdown-item" href="./notes/danl-ggplot.html">
+ <span class="dropdown-text">Data Visualization with <code>ggplot</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./notes/danl-dplyr.html">
+ <span class="dropdown-text">Data Transformation with <code>dplyr</code></span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./blog-listing.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#background-and-related-literature" id="toc-background-and-related-literature" class="nav-link" data-scroll-target="#background-and-related-literature"><span class="header-section-number">2</span> Background and Related Literature</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">3</span> Data</a>
+  <ul class="collapse">
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">3.1</span> Data Sources</a></li>
+  <li><a href="#unit-of-observation" id="toc-unit-of-observation" class="nav-link" data-scroll-target="#unit-of-observation"><span class="header-section-number">3.2</span> Unit of Observation</a></li>
+  <li><a href="#geographic-scope" id="toc-geographic-scope" class="nav-link" data-scroll-target="#geographic-scope"><span class="header-section-number">3.3</span> Geographic Scope</a></li>
+  <li><a href="#key-variables" id="toc-key-variables" class="nav-link" data-scroll-target="#key-variables"><span class="header-section-number">3.4</span> Key Variables</a>
+  <ul class="collapse">
+  <li><a href="#outcome-variable" id="toc-outcome-variable" class="nav-link" data-scroll-target="#outcome-variable"><span class="header-section-number">3.4.1</span> Outcome Variable</a></li>
+  <li><a href="#main-explanatory-variables" id="toc-main-explanatory-variables" class="nav-link" data-scroll-target="#main-explanatory-variables"><span class="header-section-number">3.4.2</span> Main Explanatory Variables</a></li>
+  <li><a href="#control-variables" id="toc-control-variables" class="nav-link" data-scroll-target="#control-variables"><span class="header-section-number">3.4.3</span> Control Variables</a></li>
+  </ul></li>
+  <li><a href="#data-cleaning-and-processing" id="toc-data-cleaning-and-processing" class="nav-link" data-scroll-target="#data-cleaning-and-processing"><span class="header-section-number">3.5</span> Data Cleaning and Processing</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="header-section-number">3.6</span> Summary Statistics</a></li>
+  <li><a href="#data-limitations" id="toc-data-limitations" class="nav-link" data-scroll-target="#data-limitations"><span class="header-section-number">3.7</span> Data Limitations</a></li>
+  </ul></li>
+  <li><a href="#empirical-strategy-methods" id="toc-empirical-strategy-methods" class="nav-link" data-scroll-target="#empirical-strategy-methods"><span class="header-section-number">4</span> Empirical Strategy / Methods</a>
+  <ul class="collapse">
+  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis"><span class="header-section-number">4.1</span> Regression Analysis</a></li>
+  <li><a href="#continuous-distance-model" id="toc-continuous-distance-model" class="nav-link" data-scroll-target="#continuous-distance-model"><span class="header-section-number">4.2</span> Continuous Distance Model</a></li>
+  <li><a href="#machine-learning-component" id="toc-machine-learning-component" class="nav-link" data-scroll-target="#machine-learning-component"><span class="header-section-number">4.3</span> Machine Learning Component</a></li>
+  <li><a href="#interpretation-and-identification" id="toc-interpretation-and-identification" class="nav-link" data-scroll-target="#interpretation-and-identification"><span class="header-section-number">4.4</span> Interpretation and Identification</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">5</span> Results</a>
+  <ul class="collapse">
+  <li><a href="#descriptive-findings" id="toc-descriptive-findings" class="nav-link" data-scroll-target="#descriptive-findings"><span class="header-section-number">5.1</span> Descriptive Findings</a></li>
+  <li><a href="#regression-results" id="toc-regression-results" class="nav-link" data-scroll-target="#regression-results"><span class="header-section-number">5.2</span> Regression Results</a></li>
+  <li><a href="#continuous-distance-results" id="toc-continuous-distance-results" class="nav-link" data-scroll-target="#continuous-distance-results"><span class="header-section-number">5.3</span> Continuous Distance Results</a></li>
+  <li><a href="#machine-learning-results" id="toc-machine-learning-results" class="nav-link" data-scroll-target="#machine-learning-results"><span class="header-section-number">5.4</span> Machine Learning Results</a></li>
+  <li><a href="#robustness-and-interpretation" id="toc-robustness-and-interpretation" class="nav-link" data-scroll-target="#robustness-and-interpretation"><span class="header-section-number">5.5</span> Robustness and Interpretation</a></li>
+  </ul></li>
+  <li><a href="#discussion-and-implications" id="toc-discussion-and-implications" class="nav-link" data-scroll-target="#discussion-and-implications"><span class="header-section-number">6</span> Discussion and Implications</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span class="header-section-number">9</span> Appendix</a>
+  <ul class="collapse">
+  <li><a href="#additional-future-extensions" id="toc-additional-future-extensions" class="nav-link" data-scroll-target="#additional-future-extensions"><span class="header-section-number">9.1</span> Additional Future Extensions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Living Near the Cloud: Quality of Life Near Data Centers in New York State</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Theodore Packert </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            SUNY Geneseo
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 14, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>Data centers have become essential infrastructure in the modern economy. As cloud computing, artificial intelligence, streaming services, and digital storage continue to expand, the demand for large-scale computing facilities has increased rapidly across the United States. New York State has experienced significant growth in data center development, particularly in and around major metropolitan areas such as New York City, Buffalo, Rochester, and Albany. While these facilities provide important technological and economic benefits, communities have increasingly raised questions about their potential local environmental and quality-of-life impacts.</p>
+<p>One of the primary concerns surrounding data centers is their substantial energy demand. Large facilities require continuous electricity to operate servers and cooling systems, and many also rely on backup diesel generators for reliability during outages or peak demand periods. Critics argue that these facilities may contribute to localized pollution, increased strain on energy infrastructure, noise exposure, and other environmental burdens. Supporters, however, argue that modern data centers are generally cleaner than traditional industrial facilities and that many environmental concerns may be overstated.</p>
+<p>This project examines whether areas located near data centers in New York State are associated with higher levels of PM2.5, a widely used measure of fine particulate air pollution. PM2.5 is an important environmental and public health indicator because exposure to elevated levels has been linked to respiratory and cardiovascular health risks. The central research question of this project is:</p>
+<p><strong>Are areas near data centers associated with higher PM2.5 levels?</strong></p>
+<p>To answer this question, I combine EPA air quality monitoring data, Census tract socioeconomic data, and geocoded data center locations throughout New York State. The analysis focuses on four metropolitan regions: New York City, Buffalo, Rochester, and Albany. I compare monitoring locations based on their proximity to the nearest data center while controlling for income, housing characteristics, population, industrial activity, and metro-level differences.</p>
+<p>The empirical strategy primarily relies on regression analysis and geospatial distance measures. In addition, I incorporate a machine learning component using random forest models to explore whether more flexible predictive approaches identify similar patterns. The project is primarily descriptive and inferential rather than fully causal. While the analysis cannot definitively establish causation, it provides evidence regarding whether localized environmental differences are associated with proximity to data centers.</p>
+<p>The results suggest that areas within one mile of a data center tend to have higher PM2.5 levels relative to areas located farther away, although the effect appears localized rather than widespread. The relationship becomes visible after controlling for socioeconomic and regional differences, highlighting the importance of accounting for confounding factors when evaluating environmental outcomes.</p>
+<p>The broader contribution of this project is to provide a localized environmental analysis of data center proximity within New York State. Rather than arguing that data centers are inherently harmful, the goal is to better understand how these facilities may interact with surrounding communities and how policymakers and planners can manage future development responsibly.</p>
+</section>
+<section id="background-and-related-literature" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Background and Related Literature</h1>
+<p>Data centers are specialized facilities that store, process, and distribute digital information. The rapid expansion of cloud computing and artificial intelligence has significantly increased the number and scale of these facilities over the last decade. Major technology companies, telecommunications firms, and colocation providers continue to invest heavily in data infrastructure throughout the United States.</p>
+<p>The environmental footprint of data centers has become an increasingly important policy issue. Existing research often focuses on the large energy consumption associated with server operations and cooling systems. Data centers can consume substantial amounts of electricity, especially in dense metropolitan regions where demand for digital services is highest. Concerns have also emerged regarding the use of backup diesel generators, which may contribute to localized emissions during testing or emergency operation.</p>
+<p>At the same time, many studies note that modern data centers are generally more energy-efficient than older industrial facilities and often invest heavily in renewable energy procurement and cooling efficiency. This creates an important empirical question: are communities located near data centers actually exposed to measurable environmental differences?</p>
+<p>PM2.5, or fine particulate matter smaller than 2.5 micrometers in diameter, is commonly used as an air quality indicator in environmental and public health research. Numerous studies have linked higher PM2.5 exposure to respiratory illness, cardiovascular disease, and increased mortality risk. Urban density, traffic congestion, industrial activity, and energy production are all known contributors to PM2.5 levels.</p>
+<p>A major challenge in studying data centers is separating their potential effects from the broader characteristics of the areas where they are located. Data centers are often concentrated in dense urban areas or industrial corridors that may already experience higher levels of pollution. This makes it difficult to determine whether any observed environmental differences are attributable to the data centers themselves or to the surrounding urban environment.</p>
+<p>This project contributes to the literature by focusing specifically on localized environmental variation near data centers within New York State. Rather than examining national-level averages, the analysis emphasizes within-metro comparisons and geospatial proximity. The project also combines traditional regression analysis with exploratory machine learning methods to evaluate whether distance to data centers consistently contributes to PM2.5 prediction.</p>
+</section>
+<section id="data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Data</h1>
+<section id="data-sources" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">3.1</span> Data Sources</h2>
+<p>This project combines three primary datasets:</p>
+<ol type="1">
+<li>EPA Air Quality System (AQS) PM2.5 monitoring data</li>
+<li>U.S. Census American Community Survey (ACS) tract-level socioeconomic data</li>
+<li>Geocoded data center location data</li>
+</ol>
+<p>The EPA AQS data provide daily PM2.5 observations for monitoring sites across New York State from 2020 through 2025. These observations are aggregated into yearly averages for each monitoring location.</p>
+<p>Socioeconomic variables are obtained from the American Community Survey 5-year estimates. These variables include median household income, median home value, median rent, total population, and an industrial activity proxy.</p>
+<p>Data center locations were collected from publicly available facility lists and geocoded using OpenStreetMap geocoding services. Geographic coordinates were used to calculate the distance from each monitoring location to the nearest data center.</p>
+</section>
+<section id="unit-of-observation" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="unit-of-observation"><span class="header-section-number">3.2</span> Unit of Observation</h2>
+<p>The primary unit of observation is a PM2.5 monitoring site-year observation. Each row in the final dataset represents the yearly average PM2.5 level observed at a monitoring location within a given year.</p>
+</section>
+<section id="geographic-scope" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="geographic-scope"><span class="header-section-number">3.3</span> Geographic Scope</h2>
+<p>The analysis focuses on four New York metropolitan regions:</p>
+<ul>
+<li>New York City</li>
+<li>Buffalo</li>
+<li>Rochester</li>
+<li>Albany</li>
+</ul>
+<p>These metro areas were selected because they contain both PM2.5 monitoring infrastructure and significant concentrations of data center facilities.</p>
+</section>
+<section id="key-variables" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="key-variables"><span class="header-section-number">3.4</span> Key Variables</h2>
+<section id="outcome-variable" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="outcome-variable"><span class="header-section-number">3.4.1</span> Outcome Variable</h3>
+<ul>
+<li><strong>PM2.5 Mean:</strong> Yearly average PM2.5 concentration measured at EPA monitoring sites.</li>
+</ul>
+</section>
+<section id="main-explanatory-variables" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="main-explanatory-variables"><span class="header-section-number">3.4.2</span> Main Explanatory Variables</h3>
+<ul>
+<li><p><strong>Distance to Nearest Data Center:</strong> Continuous distance in miles between a monitoring site and the nearest data center.</p></li>
+<li><p><strong>Distance Bands:</strong> Categorical indicators representing:</p>
+<ul>
+<li>Within 1 mile</li>
+<li>1–3 miles</li>
+<li>Over 3 miles</li>
+</ul></li>
+</ul>
+</section>
+<section id="control-variables" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="control-variables"><span class="header-section-number">3.4.3</span> Control Variables</h3>
+<ul>
+<li>Median household income</li>
+<li>Median home value</li>
+<li>Median rent</li>
+<li>Total population</li>
+<li>Industrial activity share</li>
+<li>Metro fixed effects</li>
+</ul>
+<p>The industrial activity variable is constructed as the share of employed residents working in construction, manufacturing, transportation, warehousing, and utilities occupations. This variable serves as a proxy for underlying industrial intensity.</p>
+</section>
+</section>
+<section id="data-cleaning-and-processing" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="data-cleaning-and-processing"><span class="header-section-number">3.5</span> Data Cleaning and Processing</h2>
+<p>The EPA PM2.5 files were imported and combined across years using R. Key variables such as coordinates, pollutant measurements, and dates were converted into consistent formats. Monitoring observations outside New York State were removed.</p>
+<p>Data center addresses were cleaned and geocoded to obtain latitude and longitude coordinates. PM2.5 monitoring locations and Census tracts were converted into spatial objects using the <code>sf</code> package. Distances to the nearest data center were calculated using projected coordinate systems.</p>
+</section>
+<section id="summary-statistics" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="summary-statistics"><span class="header-section-number">3.6</span> Summary Statistics</h2>
+<p>Average PM2.5 levels vary across metro areas. New York City exhibits the highest average PM2.5 levels, while Albany and Rochester show lower average pollution levels.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metro</th>
+<th>Average PM2.5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Albany</td>
+<td>6.78</td>
+</tr>
+<tr class="even">
+<td>Buffalo</td>
+<td>7.34</td>
+</tr>
+<tr class="odd">
+<td>NYC</td>
+<td>8.89</td>
+</tr>
+<tr class="even">
+<td>Rochester</td>
+<td>6.89</td>
+</tr>
+</tbody>
+</table>
+<p>The descriptive statistics indicate substantial regional variation, highlighting the importance of controlling for metro-level differences in the empirical analysis.</p>
+</section>
+<section id="data-limitations" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="data-limitations"><span class="header-section-number">3.7</span> Data Limitations</h2>
+<p>Several limitations should be acknowledged. First, data centers are often located in already industrial or urbanized areas, making causal interpretation difficult. Second, precise facility-level opening dates and emissions data are not consistently available. Third, PM2.5 monitors are not evenly distributed geographically, which may introduce spatial coverage limitations.</p>
+</section>
+</section>
+<section id="empirical-strategy-methods" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Empirical Strategy / Methods</h1>
+<section id="regression-analysis" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="regression-analysis"><span class="header-section-number">4.1</span> Regression Analysis</h2>
+<p>The primary empirical approach uses ordinary least squares (OLS) regression to estimate the relationship between PM2.5 and proximity to data centers.</p>
+<p>The baseline specification is:</p>
+<p>$$ PM2.5_i = _0 + _1 _i + _2 _i</p>
+<ul>
+<li>_3 _i + _4 _i</li>
+<li>_5 _i + _6 _i</li>
+<li>_7 _i</li>
+<li>_m + _i $$</li>
+</ul>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(PM2.5_i\)</span> is the yearly average PM2.5 level</li>
+<li>Distance variables measure proximity to data centers</li>
+<li><span class="math inline">\(X_i\)</span> represents socioeconomic control variables</li>
+<li><span class="math inline">\(\gamma_m\)</span> represents metro fixed effects</li>
+<li><span class="math inline">\(\varepsilon_i\)</span> is the error term</li>
+</ul>
+<p>The reference category for the distance-band analysis is locations more than three miles from a data center.</p>
+<p>Metro fixed effects are included to control for baseline regional differences across NYC, Buffalo, Rochester, and Albany. This allows the analysis to focus on within-metro variation rather than broad statewide differences.</p>
+</section>
+<section id="continuous-distance-model" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="continuous-distance-model"><span class="header-section-number">4.2</span> Continuous Distance Model</h2>
+<p>A secondary specification replaces the categorical distance bands with a continuous distance variable:</p>
+<p>$$ PM2.5_i = _0 + _1 _i</p>
+<ul>
+<li>_2 _i + _3 _i</li>
+<li>_4 _i + _5 _i</li>
+<li>_6 _i</li>
+<li>_m + _i $$</li>
+</ul>
+<p>This specification tests whether PM2.5 changes gradually with distance.</p>
+</section>
+<section id="machine-learning-component" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="machine-learning-component"><span class="header-section-number">4.3</span> Machine Learning Component</h2>
+<p>In addition to regression analysis, I implement a random forest model to explore predictive relationships between PM2.5 and the explanatory variables.</p>
+<p>The machine learning objective can be summarized as:</p>
+<p><span class="math display">\[
+\hat{PM2.5}_i = f(\text{Distance}_i, X_i)
+\]</span></p>
+<p>The random forest model uses an 80/20 train-test split. Model performance is evaluated using RMSE and MAE metrics. The machine learning component is primarily exploratory and intended to complement the regression analysis rather than replace it.</p>
+</section>
+<section id="interpretation-and-identification" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="interpretation-and-identification"><span class="header-section-number">4.4</span> Interpretation and Identification</h2>
+<p>This project is primarily descriptive and inferential rather than fully causal. While the regression models control for several important socioeconomic and regional factors, unobserved differences across locations may still influence the results. Therefore, the findings should be interpreted as evidence of association rather than definitive causal effects.</p>
+</section>
+</section>
+<section id="results" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Results</h1>
+<section id="descriptive-findings" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="descriptive-findings"><span class="header-section-number">5.1</span> Descriptive Findings</h2>
+<p>Raw average PM2.5 levels by distance band do not show substantially higher pollution levels near data centers. In some cases, locations within one mile even display slightly lower average PM2.5 levels than more distant areas.</p>
+<p>However, these raw comparisons do not account for regional and socioeconomic differences.</p>
+</section>
+<section id="regression-results" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="regression-results"><span class="header-section-number">5.2</span> Regression Results</h2>
+<p>The regression analysis reveals a localized relationship between proximity to data centers and PM2.5.</p>
+<p>Areas located within one mile of a data center exhibit higher PM2.5 levels relative to areas more than three miles away, after controlling for income, housing characteristics, population, industrial activity, and metro-level differences.</p>
+<p>The effect is positive and marginally statistically significant, while the 1–3 mile category does not exhibit a meaningful relationship. This pattern suggests that any environmental association is concentrated very close to data center locations rather than spread across broader metropolitan regions.</p>
+<p>The positive coefficient on median income likely reflects broader urban density effects. Higher-income observations in this dataset are often concentrated in dense urban areas such as New York City, which tend to have higher baseline pollution levels.</p>
+<p>The inclusion of industrial activity controls helps address concerns that the estimated data center relationship simply reflects broader industrial land-use patterns.</p>
+</section>
+<section id="continuous-distance-results" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="continuous-distance-results"><span class="header-section-number">5.3</span> Continuous Distance Results</h2>
+<p>The continuous distance specification produces weaker results overall but maintains a negative relationship between distance and PM2.5. In other words, PM2.5 tends to decline as distance from data centers increases, although the relationship is not strongly statistically significant.</p>
+</section>
+<section id="machine-learning-results" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="machine-learning-results"><span class="header-section-number">5.4</span> Machine Learning Results</h2>
+<p>The random forest model does not identify distance as a dominant global predictor of PM2.5. Instead, broader socioeconomic and urban variables appear more important in explaining overall variation.</p>
+<p>This finding is consistent with the regression analysis. The relationship between data center proximity and PM2.5 appears localized rather than broad enough to dominate predictive performance across all observations.</p>
+</section>
+<section id="robustness-and-interpretation" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="robustness-and-interpretation"><span class="header-section-number">5.5</span> Robustness and Interpretation</h2>
+<p>The consistency between the regression and machine learning results strengthens the broader interpretation of the project. Both approaches suggest that any relationship between data centers and PM2.5 is spatially concentrated rather than widespread.</p>
+</section>
+</section>
+<section id="discussion-and-implications" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Discussion and Implications</h1>
+<p>The results suggest that data centers may be associated with localized environmental differences, particularly within one mile of facility locations. However, the evidence does not support the idea of broad regional pollution effects extending far beyond nearby areas.</p>
+<p>This finding has important implications for urban planning and infrastructure policy. Rather than imposing broad restrictions on data center development, policymakers may benefit more from targeted strategies focused on local monitoring and mitigation.</p>
+<p>Potential policy approaches include:</p>
+<ul>
+<li>Increased environmental monitoring near large facilities</li>
+<li>Improved transparency regarding backup generator usage</li>
+<li>Localized buffer or setback guidance</li>
+<li>Greater coordination between energy infrastructure planning and community development</li>
+</ul>
+<p>The findings also highlight the importance of considering broader infrastructure effects beyond air quality alone. Data centers consume substantial amounts of electricity, which may create additional pressure on local energy systems and utility pricing over time.</p>
+<p>At the same time, the project demonstrates the challenges of isolating the independent environmental effects of data centers. Because these facilities often locate in already urbanized or industrialized areas, causal identification remains difficult.</p>
+</section>
+<section id="conclusion" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Conclusion</h1>
+<p>This project examined whether proximity to data centers in New York State is associated with higher PM2.5 levels. Using EPA monitoring data, Census tract socioeconomic variables, geospatial distance measures, regression analysis, and machine learning methods, the analysis finds evidence of localized PM2.5 differences near data center facilities.</p>
+<p>The results suggest that areas within one mile of a data center tend to exhibit higher PM2.5 levels after controlling for socioeconomic and regional differences. However, the relationship does not appear widespread beyond nearby areas.</p>
+<p>More broadly, the project highlights the importance of combining geospatial analysis, statistical controls, and machine learning approaches when evaluating environmental infrastructure questions.</p>
+<p>The findings should not be interpreted as evidence that data centers are inherently harmful. Instead, they suggest that careful planning, monitoring, and localized policy strategies may help communities better manage future data center development.</p>
+<p>Future work could improve the analysis by incorporating facility-level opening years, emissions data, traffic measures, energy consumption metrics, or stronger causal identification strategies.</p>
+</section>
+<section id="references" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> References</h1>
+<p>Environmental Protection Agency (EPA). Air Quality System (AQS) Data Mart. <a href="https://aqs.epa.gov/aqsweb/airdata/download_files.html">https://aqs.epa.gov/aqsweb/airdata/download_files.html</a>. Accessed May 2026.</p>
+<p>United States Census Bureau. American Community Survey (ACS) 5-Year Estimates. <a href="https://www.census.gov/programs-surveys/acs">https://www.census.gov/programs-surveys/acs</a>. Accessed May 2026.</p>
+<p>Federal Reserve Economic Data (FRED). Electricity Price Data. <a href="https://fred.stlouisfed.org/">https://fred.stlouisfed.org/</a>. Accessed May 2026.</p>
+<p>OpenStreetMap Nominatim Geocoder. <a href="https://nominatim.openstreetmap.org/">https://nominatim.openstreetmap.org/</a>. Accessed May 2026.</p>
+</section>
+<section id="appendix" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Appendix</h1>
+<section id="additional-future-extensions" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="additional-future-extensions"><span class="header-section-number">9.1</span> Additional Future Extensions</h2>
+<p>Potential future extensions include:</p>
+<ul>
+<li>Pre/post analysis using facility opening years</li>
+<li>Additional machine learning models such as XGBoost</li>
+<li>Noise exposure analysis</li>
+<li>Energy consumption and electricity infrastructure analysis</li>
+<li>More detailed facility-level emissions data</li>
+<li>Resident perception or community survey analysis</li>
+</ul>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="text/javascript" src="links.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Living Near the Cloud: Quality of Life Near Data Centers in New York State"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: Theodore Packert </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliation: SUNY Geneseo</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> last-modified</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span><span class="co"> </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: true</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  fig-width: 10</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">  fig-height: 6</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-title: "Contents"</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-expand: 3</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: atom-one</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Data centers have become essential infrastructure in the modern economy. As cloud computing, artificial intelligence, streaming services, and digital storage continue to expand, the demand for large-scale computing facilities has increased rapidly across the United States. New York State has experienced significant growth in data center development, particularly in and around major metropolitan areas such as New York City, Buffalo, Rochester, and Albany. While these facilities provide important technological and economic benefits, communities have increasingly raised questions about their potential local environmental and quality-of-life impacts.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>One of the primary concerns surrounding data centers is their substantial energy demand. Large facilities require continuous electricity to operate servers and cooling systems, and many also rely on backup diesel generators for reliability during outages or peak demand periods. Critics argue that these facilities may contribute to localized pollution, increased strain on energy infrastructure, noise exposure, and other environmental burdens. Supporters, however, argue that modern data centers are generally cleaner than traditional industrial facilities and that many environmental concerns may be overstated.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>This project examines whether areas located near data centers in New York State are associated with higher levels of PM2.5, a widely used measure of fine particulate air pollution. PM2.5 is an important environmental and public health indicator because exposure to elevated levels has been linked to respiratory and cardiovascular health risks. The central research question of this project is:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>**Are areas near data centers associated with higher PM2.5 levels?** </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>To answer this question, I combine EPA air quality monitoring data, Census tract socioeconomic data, and geocoded data center locations throughout New York State. The analysis focuses on four metropolitan regions: New York City, Buffalo, Rochester, and Albany. I compare monitoring locations based on their proximity to the nearest data center while controlling for income, housing characteristics, population, industrial activity, and metro-level differences.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>The empirical strategy primarily relies on regression analysis and geospatial distance measures. In addition, I incorporate a machine learning component using random forest models to explore whether more flexible predictive approaches identify similar patterns. The project is primarily descriptive and inferential rather than fully causal. While the analysis cannot definitively establish causation, it provides evidence regarding whether localized environmental differences are associated with proximity to data centers.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>The results suggest that areas within one mile of a data center tend to have higher PM2.5 levels relative to areas located farther away, although the effect appears localized rather than widespread. The relationship becomes visible after controlling for socioeconomic and regional differences, highlighting the importance of accounting for confounding factors when evaluating environmental outcomes.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>The broader contribution of this project is to provide a localized environmental analysis of data center proximity within New York State. Rather than arguing that data centers are inherently harmful, the goal is to better understand how these facilities may interact with surrounding communities and how policymakers and planners can manage future development responsibly.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu"># Background and Related Literature</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Data centers are specialized facilities that store, process, and distribute digital information. The rapid expansion of cloud computing and artificial intelligence has significantly increased the number and scale of these facilities over the last decade. Major technology companies, telecommunications firms, and colocation providers continue to invest heavily in data infrastructure throughout the United States.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>The environmental footprint of data centers has become an increasingly important policy issue. Existing research often focuses on the large energy consumption associated with server operations and cooling systems. Data centers can consume substantial amounts of electricity, especially in dense metropolitan regions where demand for digital services is highest. Concerns have also emerged regarding the use of backup diesel generators, which may contribute to localized emissions during testing or emergency operation.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>At the same time, many studies note that modern data centers are generally more energy-efficient than older industrial facilities and often invest heavily in renewable energy procurement and cooling efficiency. This creates an important empirical question: are communities located near data centers actually exposed to measurable environmental differences?</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>PM2.5, or fine particulate matter smaller than 2.5 micrometers in diameter, is commonly used as an air quality indicator in environmental and public health research. Numerous studies have linked higher PM2.5 exposure to respiratory illness, cardiovascular disease, and increased mortality risk. Urban density, traffic congestion, industrial activity, and energy production are all known contributors to PM2.5 levels.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>A major challenge in studying data centers is separating their potential effects from the broader characteristics of the areas where they are located. Data centers are often concentrated in dense urban areas or industrial corridors that may already experience higher levels of pollution. This makes it difficult to determine whether any observed environmental differences are attributable to the data centers themselves or to the surrounding urban environment.</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>This project contributes to the literature by focusing specifically on localized environmental variation near data centers within New York State. Rather than examining national-level averages, the analysis emphasizes within-metro comparisons and geospatial proximity. The project also combines traditional regression analysis with exploratory machine learning methods to evaluate whether distance to data centers consistently contributes to PM2.5 prediction.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Sources</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>This project combines three primary datasets:</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>EPA Air Quality System (AQS) PM2.5 monitoring data</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>U.S. Census American Community Survey (ACS) tract-level socioeconomic data</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Geocoded data center location data</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>The EPA AQS data provide daily PM2.5 observations for monitoring sites across New York State from 2020 through 2025. These observations are aggregated into yearly averages for each monitoring location.</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>Socioeconomic variables are obtained from the American Community Survey 5-year estimates. These variables include median household income, median home value, median rent, total population, and an industrial activity proxy.</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>Data center locations were collected from publicly available facility lists and geocoded using OpenStreetMap geocoding services. Geographic coordinates were used to calculate the distance from each monitoring location to the nearest data center.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Unit of Observation</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>The primary unit of observation is a PM2.5 monitoring site-year observation. Each row in the final dataset represents the yearly average PM2.5 level observed at a monitoring location within a given year.</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Geographic Scope</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>The analysis focuses on four New York metropolitan regions:</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>New York City</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Buffalo</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Rochester</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Albany</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>These metro areas were selected because they contain both PM2.5 monitoring infrastructure and significant concentrations of data center facilities.</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Variables</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Outcome Variable</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**PM2.5 Mean:** Yearly average PM2.5 concentration measured at EPA monitoring sites.</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### Main Explanatory Variables</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Distance to Nearest Data Center:** Continuous distance in miles between a monitoring site and the nearest data center.</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Distance Bands:** Categorical indicators representing:</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Within 1 mile</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>1–3 miles</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Over 3 miles</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="fu">### Control Variables</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Median household income</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Median home value</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Median rent</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Total population</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Industrial activity share</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Metro fixed effects</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>The industrial activity variable is constructed as the share of employed residents working in construction, manufacturing, transportation, warehousing, and utilities occupations. This variable serves as a proxy for underlying industrial intensity.</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Cleaning and Processing</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>The EPA PM2.5 files were imported and combined across years using R. Key variables such as coordinates, pollutant measurements, and dates were converted into consistent formats. Monitoring observations outside New York State were removed.</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>Data center addresses were cleaned and geocoded to obtain latitude and longitude coordinates. PM2.5 monitoring locations and Census tracts were converted into spatial objects using the <span class="in">`sf`</span> package. Distances to the nearest data center were calculated using projected coordinate systems.</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Statistics</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>Average PM2.5 levels vary across metro areas. New York City exhibits the highest average PM2.5 levels, while Albany and Rochester show lower average pollution levels.</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Metro     <span class="pp">|</span> Average PM2.5 <span class="pp">|</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="pp">| ---------</span> <span class="pp">| -------------</span> <span class="pp">|</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Albany    <span class="pp">|</span> 6.78          <span class="pp">|</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Buffalo   <span class="pp">|</span> 7.34          <span class="pp">|</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> NYC       <span class="pp">|</span> 8.89          <span class="pp">|</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Rochester <span class="pp">|</span> 6.89          <span class="pp">|</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>The descriptive statistics indicate substantial regional variation, highlighting the importance of controlling for metro-level differences in the empirical analysis.</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Limitations</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>Several limitations should be acknowledged. First, data centers are often located in already industrial or urbanized areas, making causal interpretation difficult. Second, precise facility-level opening dates and emissions data are not consistently available. Third, PM2.5 monitors are not evenly distributed geographically, which may introduce spatial coverage limitations.</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="fu"># Empirical Strategy / Methods</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## Regression Analysis</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>The primary empirical approach uses ordinary least squares (OLS) regression to estimate the relationship between PM2.5 and proximity to data centers.</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>The baseline specification is:</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>PM2.5_i = \beta_0 + \beta_1 \text{Within1Mile}_i + \beta_2 \text{OneToThreeMiles}_i</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\beta_3 \text{Income}_i + \beta_4 \text{HomeValue}_i</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\beta_5 \text{Rent}_i + \beta_6 \text{Population}_i</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\beta_7 \text{IndustrialActivity}_i</span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\gamma_m + \varepsilon_i</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>  $$</span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>Where:</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$PM2.5_i$ is the yearly average PM2.5 level</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Distance variables measure proximity to data centers</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$X_i$ represents socioeconomic control variables</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\gamma_m$ represents metro fixed effects</span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\varepsilon_i$ is the error term</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>The reference category for the distance-band analysis is locations more than three miles from a data center.</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>Metro fixed effects are included to control for baseline regional differences across NYC, Buffalo, Rochester, and Albany. This allows the analysis to focus on within-metro variation rather than broad statewide differences.</span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## Continuous Distance Model</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>A secondary specification replaces the categorical distance bands with a continuous distance variable:</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>PM2.5_i = \beta_0 + \beta_1 \text{DistanceMiles}_i</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\beta_2 \text{Income}_i + \beta_3 \text{HomeValue}_i</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\beta_4 \text{Rent}_i + \beta_5 \text{Population}_i</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\beta_6 \text{IndustrialActivity}_i</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>\gamma_m + \varepsilon_i</span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>  $$</span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>This specification tests whether PM2.5 changes gradually with distance.</span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## Machine Learning Component</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>In addition to regression analysis, I implement a random forest model to explore predictive relationships between PM2.5 and the explanatory variables.</span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>The machine learning objective can be summarized as:</span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>\hat{PM2.5}_i = f(\text{Distance}_i, X_i)</span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>The random forest model uses an 80/20 train-test split. Model performance is evaluated using RMSE and MAE metrics. The machine learning component is primarily exploratory and intended to complement the regression analysis rather than replace it.</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretation and Identification</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>This project is primarily descriptive and inferential rather than fully causal. While the regression models control for several important socioeconomic and regional factors, unobserved differences across locations may still influence the results. Therefore, the findings should be interpreted as evidence of association rather than definitive causal effects.</span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="fu"># Results</span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descriptive Findings</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>Raw average PM2.5 levels by distance band do not show substantially higher pollution levels near data centers. In some cases, locations within one mile even display slightly lower average PM2.5 levels than more distant areas.</span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>However, these raw comparisons do not account for regional and socioeconomic differences.</span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Regression Results</span></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>The regression analysis reveals a localized relationship between proximity to data centers and PM2.5.</span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>Areas located within one mile of a data center exhibit higher PM2.5 levels relative to areas more than three miles away, after controlling for income, housing characteristics, population, industrial activity, and metro-level differences.</span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>The effect is positive and marginally statistically significant, while the 1–3 mile category does not exhibit a meaningful relationship. This pattern suggests that any environmental association is concentrated very close to data center locations rather than spread across broader metropolitan regions.</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>The positive coefficient on median income likely reflects broader urban density effects. Higher-income observations in this dataset are often concentrated in dense urban areas such as New York City, which tend to have higher baseline pollution levels.</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>The inclusion of industrial activity controls helps address concerns that the estimated data center relationship simply reflects broader industrial land-use patterns.</span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="fu">## Continuous Distance Results</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a>The continuous distance specification produces weaker results overall but maintains a negative relationship between distance and PM2.5. In other words, PM2.5 tends to decline as distance from data centers increases, although the relationship is not strongly statistically significant.</span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## Machine Learning Results</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a>The random forest model does not identify distance as a dominant global predictor of PM2.5. Instead, broader socioeconomic and urban variables appear more important in explaining overall variation.</span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>This finding is consistent with the regression analysis. The relationship between data center proximity and PM2.5 appears localized rather than broad enough to dominate predictive performance across all observations.</span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="fu">## Robustness and Interpretation</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a>The consistency between the regression and machine learning results strengthens the broader interpretation of the project. Both approaches suggest that any relationship between data centers and PM2.5 is spatially concentrated rather than widespread.</span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="fu"># Discussion and Implications</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a>The results suggest that data centers may be associated with localized environmental differences, particularly within one mile of facility locations. However, the evidence does not support the idea of broad regional pollution effects extending far beyond nearby areas.</span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>This finding has important implications for urban planning and infrastructure policy. Rather than imposing broad restrictions on data center development, policymakers may benefit more from targeted strategies focused on local monitoring and mitigation.</span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>Potential policy approaches include:</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Increased environmental monitoring near large facilities</span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Improved transparency regarding backup generator usage</span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Localized buffer or setback guidance</span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Greater coordination between energy infrastructure planning and community development</span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>The findings also highlight the importance of considering broader infrastructure effects beyond air quality alone. Data centers consume substantial amounts of electricity, which may create additional pressure on local energy systems and utility pricing over time.</span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>At the same time, the project demonstrates the challenges of isolating the independent environmental effects of data centers. Because these facilities often locate in already urbanized or industrialized areas, causal identification remains difficult.</span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a>This project examined whether proximity to data centers in New York State is associated with higher PM2.5 levels. Using EPA monitoring data, Census tract socioeconomic variables, geospatial distance measures, regression analysis, and machine learning methods, the analysis finds evidence of localized PM2.5 differences near data center facilities.</span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a>The results suggest that areas within one mile of a data center tend to exhibit higher PM2.5 levels after controlling for socioeconomic and regional differences. However, the relationship does not appear widespread beyond nearby areas.</span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a>More broadly, the project highlights the importance of combining geospatial analysis, statistical controls, and machine learning approaches when evaluating environmental infrastructure questions.</span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a>The findings should not be interpreted as evidence that data centers are inherently harmful. Instead, they suggest that careful planning, monitoring, and localized policy strategies may help communities better manage future data center development.</span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a>Future work could improve the analysis by incorporating facility-level opening years, emissions data, traffic measures, energy consumption metrics, or stronger causal identification strategies.</span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>Environmental Protection Agency (EPA). Air Quality System (AQS) Data Mart. <span class="co">[</span><span class="ot">https://aqs.epa.gov/aqsweb/airdata/download_files.html</span><span class="co">](https://aqs.epa.gov/aqsweb/airdata/download_files.html)</span>. Accessed May 2026.</span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a>United States Census Bureau. American Community Survey (ACS) 5-Year Estimates. <span class="co">[</span><span class="ot">https://www.census.gov/programs-surveys/acs</span><span class="co">](https://www.census.gov/programs-surveys/acs)</span>. Accessed May 2026.</span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>Federal Reserve Economic Data (FRED). Electricity Price Data. <span class="co">[</span><span class="ot">https://fred.stlouisfed.org/</span><span class="co">](https://fred.stlouisfed.org/)</span>. Accessed May 2026.</span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>OpenStreetMap Nominatim Geocoder. <span class="co">[</span><span class="ot">https://nominatim.openstreetmap.org/</span><span class="co">](https://nominatim.openstreetmap.org/)</span>. Accessed May 2026.</span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="fu"># Appendix</span></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="fu">## Additional Future Extensions</span></span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>Potential future extensions include:</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Pre/post analysis using facility opening years</span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Additional machine learning models such as XGBoost</span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Noise exposure analysis</span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Energy consumption and electricity infrastructure analysis</span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>More detailed facility-level emissions data</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Resident perception or community survey analysis</span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
