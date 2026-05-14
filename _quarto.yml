@@ -9,7 +9,7 @@ website:
     pinned: true
     left:
       - text: Project
-        href: danl-research-template.html
+        href: danl-research-template_copy.html
       - text: Data Analysis
         menu: 
           - text: Data Visualization with `ggplot`
